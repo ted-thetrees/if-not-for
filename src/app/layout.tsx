@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { AuthProvider } from "@descope/nextjs-sdk";
+import { AudioProvider } from "@/components/AudioProvider";
+import { FooterPlayer } from "@/components/FooterPlayer";
 import "./globals.css";
-import { AudioProvider } from "@/components/AudioContext";
-import FooterPlayer from "@/components/FooterPlayer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,7 +12,8 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   title: "If not for… | A gratitude project",
-  description: "A podcast where guests talk about one person who's had an indelibly positive effect on their life.",
+  description:
+    "A podcast where guests talk about one person who's had an indelibly positive effect on their life.",
 };
 
 export default function RootLayout({
@@ -20,13 +22,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} font-sans antialiased`}>
-        <AudioProvider>
-          {children}
-          <FooterPlayer />
-        </AudioProvider>
-      </body>
-    </html>
+    <AuthProvider projectId={process.env.NEXT_PUBLIC_DESCOPE_PROJECT_ID!}>
+      <html lang="en">
+        <body className={`${geistSans.variable} font-sans antialiased`}>
+          <AudioProvider>
+            {children}
+            <FooterPlayer />
+          </AudioProvider>
+        </body>
+      </html>
+    </AuthProvider>
   );
 }

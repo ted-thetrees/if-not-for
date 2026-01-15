@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { AuthProvider } from "@descope/nextjs-sdk";
-import { AudioProvider } from "@/components/AudioProvider";
-import { FooterPlayer } from "@/components/FooterPlayer";
+import { AudioProvider } from "@/components/AudioContext";
+import FooterPlayer from "@/components/FooterPlayer";
 import "./globals.css";
 
 const geistSans = Geist({

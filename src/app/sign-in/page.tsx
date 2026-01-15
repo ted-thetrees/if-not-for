@@ -16,7 +16,7 @@ export default function SignIn() {
         <Descope
           flowId="sign-up-or-in"
           onSuccess={() => router.push('/')}
-          onError={(e) => console.error('Authentication error:', e)}
+          onError={(e: CustomEvent) => console.error('Authentication error:', e)}
           theme="light"
         />
       </div>

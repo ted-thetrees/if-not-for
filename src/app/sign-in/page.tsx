@@ -1,10 +1,37 @@
 'use client';
 
-import { Descope } from '@descope/nextjs-sdk';
+import { Descope, useSession } from '@descope/nextjs-sdk';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function SignIn() {
   const router = useRouter();
+  const { isAuthenticated, isSessionLoading } = useSession();
+
+  // Redirect if already authenticated (e.g., from magic link callback)
+  useEffect(() => {
+    if (!isSessionLoading && isAuthenticated) {
+      router.push('/');
+    }
+  }, [isAuthenticated, isSessionLoading, router]);
+
+  // Show loading while checking session
+  if (isSessionLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gray-50">
+        <div className="text-gray-600">Loading...</div>
+      </div>
+    );
+  }
+
+  // Don't show login form if already authenticated (will redirect)
+  if (isAuthenticated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gray-50">
+        <div className="text-gray-600">Redirecting...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50">

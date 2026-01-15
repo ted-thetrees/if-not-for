@@ -29,13 +29,23 @@ export default function SignIn() {
 
     const verifyUrl = `${window.location.origin}/verify`;
     
-    const resp = await sdk.magicLink.signUpOrIn.email(email, verifyUrl);
-    
-    if (!resp.ok) {
+    try {
+      const resp = await sdk.magicLink.signUpOrIn.email(email, verifyUrl);
+      
+      console.log('Descope response:', resp);
+      
+      if (!resp.ok) {
+        setStatus('error');
+        const errMsg = resp.error?.errorDescription || resp.error?.errorMessage || resp.error?.errorCode || 'Something went wrong. Please try again.';
+        setErrorMessage(String(errMsg));
+      } else {
+        setStatus('sent');
+      }
+    } catch (err: unknown) {
+      console.error('Descope error:', err);
       setStatus('error');
-      setErrorMessage(resp.error?.errorMessage || 'Something went wrong. Please try again.');
-    } else {
-      setStatus('sent');
+      const errorMsg = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+      setErrorMessage(errorMsg);
     }
   };
 

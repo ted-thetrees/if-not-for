@@ -36,8 +36,9 @@ export async function GET() {
     );
   }
 
-  // Get user email from session token
-  const userEmail = currentSession.token?.email;
+  // Get user email from session token with type guard
+  const emailFromToken = currentSession.token?.email;
+  const userEmail = typeof emailFromToken === 'string' ? emailFromToken : null;
   
   if (!userEmail) {
     return NextResponse.json(

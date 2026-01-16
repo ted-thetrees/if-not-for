@@ -30,7 +30,7 @@ export default function StoryDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
-  const { currentSrc, isPlaying, currentTime, duration, play, pause, seek } = useAudio();
+  const { currentTrack, isPlaying, currentTime, duration, play, pause, seek } = useAudio();
 
   useEffect(() => {
     async function fetchStory() {
@@ -80,15 +80,15 @@ export default function StoryDetail() {
     );
   }
 
-  const isThisPlaying = isPlaying && currentSrc === story.audioUrl;
-  const isThisLoaded = currentSrc === story.audioUrl;
+  const isThisPlaying = isPlaying && currentTrack?.src === story.audioUrl;
+  const isThisLoaded = currentTrack?.src === story.audioUrl;
   const progress = isThisLoaded && duration > 0 ? (currentTime / duration) * 100 : 0;
 
   const togglePlay = () => {
     if (isThisPlaying) {
       pause();
     } else {
-      play(story.audioUrl, story.guestName || story.name);
+      play({ src: story.audioUrl, title: story.guestName || story.name });
     }
   };
 

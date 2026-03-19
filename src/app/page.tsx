@@ -17,7 +17,7 @@ export default function Home() {
 
         {/* Quote + Play Button */}
         <div className="bg-[#c1b17d] flex flex-col items-center gap-[70px] px-10 py-10">
-          <p className="font-serif text-[#013838] text-[29px] leading-normal">
+          <p className="font-['new-spirit-condensed',serif] text-[#013838] text-[29px] leading-normal">
             Suzanne Mozes: &ldquo;If not for my 7th-grade teacher whose name I
             can&rsquo;t remember, I probably wouldn&rsquo;t have discovered my
             love for writing&hellip;&rdquo;

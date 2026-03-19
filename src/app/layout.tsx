@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import { AuthProvider } from "@descope/nextjs-sdk";
-import { AudioProvider } from "@/components/AudioContext";
-import { UserStatus } from "@/components/UserStatus";
-import FooterPlayer from "@/components/FooterPlayer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,18 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <AuthProvider projectId={process.env.NEXT_PUBLIC_DESCOPE_PROJECT_ID!}>
-      <html lang="en">
-        <body className={`${geistSans.variable} font-sans antialiased`}>
-          <AudioProvider>
-            <header className="fixed top-0 right-0 p-4 z-50">
-              <UserStatus />
-            </header>
-            {children}
-            <FooterPlayer />
-          </AudioProvider>
-        </body>
-      </html>
-    </AuthProvider>
+    <html lang="en">
+      <body className={`${geistSans.variable} font-sans antialiased`}>
+        {children}
+      </body>
+    </html>
   );
 }

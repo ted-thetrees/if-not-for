@@ -11,6 +11,7 @@
   "dependencies": {
     "@descope/nextjs-sdk": "^0.4.0",
     "howler": "^2.2.4",
+    "motion": "^12.38.0",
     "next": "16.1.2",
     "react": "19.2.3",
     "react-dom": "19.2.3"

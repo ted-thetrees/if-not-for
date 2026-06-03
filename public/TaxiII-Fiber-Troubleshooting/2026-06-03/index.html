@@ -131,7 +131,7 @@
 <header class="masthead">
   <div class="wrap">
     <p class="eyebrow">Residential Internet Diagnostics &middot; For the Building Board, Axon Networks &amp; Quantum Fiber</p>
-    <h1>My gigabit service is delivering 50–100 Mbps during heavy packet loss</h1>
+    <h1>My gigabit service is delivering 5–75 Mbps during heavy packet loss</h1>
     <p class="lede">This is a friendly, evidence-based summary of what I measured on my home internet connection. I did a fair amount of testing myself first, so I could share something concrete rather than just &ldquo;the internet feels slow.&rdquo; Thank you in advance for taking a look.</p>
 
     <div class="addr">
@@ -144,7 +144,7 @@
     <div class="meta-grid">
       <div><p class="k">Date of tests</p><p class="v">June 3, 2026</p></div>
       <div><p class="k">Subscribed plan</p><p class="v">1 Gbps fiber</p></div>
-      <div><p class="k">Symptom</p><p class="v">Drops to 50–100 Mbps</p></div>
+      <div><p class="k">Symptom</p><p class="v">Drops to 5–75 Mbps</p></div>
       <div><p class="k">Devices affected</p><p class="v">3 (all Wi-Fi)</p></div>
     </div>
   </div>
@@ -162,13 +162,13 @@
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>Start here — and thank you</h3>
-      <p>Thank you for taking the time. My home internet is supposed to be 1 gigabit, but lately it keeps dropping to <b>50–100 Mbps</b> — slow enough to be a real problem, and it&rsquo;s happening on all three of my devices.</p>
+      <p>Thank you for taking the time. My home internet is supposed to be 1 gigabit, but lately it keeps dropping to <b>5–75 Mbps</b> — slow enough to be a real problem, and it&rsquo;s happening on all three of my devices.</p>
       <p>Before reaching out, I ran my own tests so I could hand you something concrete instead of just &ldquo;it feels slow.&rdquo; Everything on this left side is in plain English; the same point appears in full technical detail on the right. Both say the same thing.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
       <h3>Scope &amp; method</h3>
-      <p>A 1 Gbps fiber plan is intermittently delivering <b>50–100 Mbps</b> (recovering to 500–600 Mbps) across three Wi-Fi clients since on/about June 1, 2026, with no clear diurnal pattern.</p>
+      <p>A 1 Gbps fiber plan is intermittently delivering <b>5–75 Mbps</b> (recovering to 500–600 Mbps) across three Wi-Fi clients, <b>first noticed</b> on/about June 1, 2026 — earlier sub-threshold episodes can&rsquo;t be ruled out — with no clear diurnal pattern.</p>
       <p>All diagnostics were run <b>June 3, 2026</b> from a single macOS client associated to the building Wi-Fi (no wired drop exists in the unit), using <code>ping</code>, <code>traceroute</code>, <code>system_profiler</code>, <code>netstat</code>, and <code>openssl</code>. Exact figures and reasoning are on this side; raw output is in the final row.</p>
     </div>
   </div>
@@ -180,9 +180,9 @@
       <h3>The bottom line</h3>
       <ul class="points">
         <li><span class="pill green">Good</span> My Wi-Fi and my devices are fine — strong signal, full-speed wireless.</li>
-        <li><span class="pill red">Problem</span> A large share of my data — roughly <b>20% to 56%</b> in repeated tests — is getting lost in transit. That alone drags gigabit down to 50–100 Mbps.</li>
+        <li><span class="pill red">Problem</span> A large share of my data — roughly <b>20% to 56%</b> in repeated tests — is getting lost in transit. That alone drags gigabit down to 5–75 Mbps.</li>
         <li><span class="pill amber">Context</span> The loss begins at the <b>very first box</b> my connection reaches. That box is building-managed, and my unit was connected by &ldquo;splitting an existing pipe.&rdquo;</li>
-        <li><span class="pill green">New</span> It started this week. The same laptop tested perfectly clean on May 30.</li>
+        <li><span class="pill green">New</span> This is the first week I <i>noticed</i> it. Earlier dips may have gone unnoticed when I wasn&rsquo;t using much bandwidth — but the same laptop tested perfectly clean on May 30.</li>
       </ul>
     </div>
     <div class="col tech">
@@ -190,9 +190,9 @@
       <h3>Executive summary</h3>
       <ul class="points">
         <li><span class="pill blue">RF</span> Air link near-ideal: &minus;41 dBm, SNR ≈ 53 dB, 1200 Mbps PHY, <b>0 interface errors</b> — client/Wi-Fi excluded.</li>
-        <li><span class="pill red">Loss</span> <b>20–56%</b> end-to-end packet loss to public anchors; loss-dominated (RTT stable 3–13 ms). TCP goodput collapses under AIMD &rarr; the observed 50–100 Mbps floors.</li>
+        <li><span class="pill red">Loss</span> <b>20–56%</b> end-to-end packet loss to public anchors; loss-dominated (RTT stable 3–13 ms). TCP goodput collapses under AIMD &rarr; the observed 5–75 Mbps floors.</li>
         <li><span class="pill amber">Topology</span> Loss originates at <b>hop 1</b> and compounds upstream. Gateway = <b>Axon Networks MDU CPE</b>; service delivered over a recently &ldquo;split&rdquo; feed.</li>
-        <li><span class="pill blue">Trend</span> Clean baseline May 30 (0% loss, ~280 Mbps) &rarr; recent regression; non-stationary (23%&rarr;56% in ~20 min); fleet-wide via shared AP.</li>
+        <li><span class="pill blue">Trend</span> First <i>observed</i> this week; clean baseline May 30 (0% loss, ~280 Mbps). Onset is observational — sub-threshold loss during low-demand periods could predate detection. Non-stationary (23%&rarr;56% in ~20 min); fleet-wide via shared AP.</li>
       </ul>
     </div>
   </div>
@@ -231,7 +231,7 @@
       <span class="chip simple">Plain English</span>
       <h3>A lot of my data is getting lost</h3>
       <p>Next I measured how much data actually makes it through. Think of the connection as a delivery route — when I sent test packages along it, <b>somewhere between one-in-five and more than half never arrived.</b></p>
-      <p>That&rsquo;s the heart of the problem. When data is lost, the connection automatically slows itself down to recover — which is exactly why a gigabit line ends up feeling like 50–100 Mbps.</p>
+      <p>That&rsquo;s the heart of the problem. When data is lost, the connection automatically slows itself down to recover — which is exactly why a gigabit line ends up feeling like 5–75 Mbps.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
@@ -294,12 +294,13 @@
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>It is new, and it comes and goes</h3>
-      <p>This started only this week, with no obvious time-of-day pattern. The very same laptop tested perfectly clean just a few days ago. And it affects <b>all three of my devices</b>, which all connect wirelessly through that same building box.</p>
+      <p>This week is the first time I <i>noticed</i> a slowdown — but to be fair, there may well have been earlier slow patches that neither I nor my computer flagged, simply because I didn&rsquo;t happen to need much speed at those moments.</p>
+      <p>What I can say for certain: the same laptop tested perfectly clean on May 30, there&rsquo;s no obvious time-of-day pattern, and it affects <b>all three of my devices</b>, which all connect wirelessly through that same building box.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
       <h3>Regression vs. a known-clean baseline</h3>
-      <p>Baseline on the <i>same</i> client, <b>May 30, 2026</b>: ~280 Mbps download, <b>0% loss</b>, low latency, no bufferbloat under load. Today&rsquo;s loss is therefore a <b>recent regression</b>, not a longstanding condition. Loss is non-stationary (23%&rarr;56% within ~20 min), and all my devices share the same managed AP — consistent with a shared upstream impairment.</p>
+      <p>Baseline on the <i>same</i> client, <b>May 30, 2026</b>: ~280 Mbps download, <b>0% loss</b>, low latency, no bufferbloat under load. The degradation was <b>first noticed this week</b>, but onset is <b>observational</b>: intermittent loss during low-demand periods can pass unnoticed, so the true start may predate detection — the May 30 clean run bounds it loosely, not precisely. Loss is non-stationary (23%&rarr;56% within ~20 min), and all my devices share the same managed AP — consistent with a shared upstream impairment.</p>
     </div>
   </div>
 

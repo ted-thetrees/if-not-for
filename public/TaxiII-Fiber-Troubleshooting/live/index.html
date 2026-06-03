@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Taxi II Fiber — Live Monitor</title>
+<style>
+  :root{
+    --bg:#f4f6f9; --card:#fff; --ink:#1f2733; --muted:#5a6573; --border:#e3e8ef; --soft:#f7f9fc;
+    --green:#0f7a4d; --amber:#caa23a; --orange:#d9822b; --red:#c2391b; --blue:#1d4ed8; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 16px 56px}
+  header.mast{background:linear-gradient(135deg,#16202e,#1f3b4d 55%,#176b5f);color:#fff;padding:26px 0 22px;margin-bottom:20px}
+  header.mast .wrap{padding-bottom:0}
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin:0 0 6px}
+  h1{font-size:24px;margin:0 0 6px}
+  .sub{opacity:.92;margin:0;font-size:14.5px}
+  .updated{margin-top:12px;font-size:13px;opacity:.9}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#7CFFB2;margin-right:6px;vertical-align:middle}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+  .c{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:15px 16px}
+  .c .k{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 6px}
+  .c .v{font-size:26px;font-weight:700;margin:0;line-height:1.1}
+  .c .s{font-size:12px;color:var(--muted);margin:4px 0 0}
+  section.panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 18px 14px;margin-bottom:18px}
+  section.panel h2{font-size:16px;margin:0 0 4px}
+  section.panel p.note{font-size:12.5px;color:var(--muted);margin:0 0 12px}
+  .chart{width:100%;height:auto;display:block}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle}
+  .axis{font-size:10px;fill:var(--muted)}
+  .barlabel{font-size:9px;fill:var(--muted)}
+  footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:12.5px}
+  a{color:var(--blue)}
+  .err{background:#fce9e4;border:1px solid #f3c6ba;color:#8f2c17;border-radius:10px;padding:12px 14px;font-size:13.5px;margin-bottom:16px;display:none}
+  @media(max-width:720px){.cards{grid-template-columns:1fr 1fr}h1{font-size:20px}}
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="wrap">
+    <p class="eyebrow">Taxi II &middot; 3457 Ringsby Ct, Denver &middot; Quantum Fiber (managed via Axon Networks)</p>
+    <h1>Live Connection Monitor</h1>
+    <p class="sub">Packet loss &amp; latency sampled every 5 minutes from an always-on Mac mini on the apartment Wi-Fi. Lower is better.</p>
+    <p class="updated" id="updated"><span class="dot"></span>Loading…</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="err" id="err"></div>
+
+  <div class="cards" id="cards"></div>
+
+  <section class="panel">
+    <h2>Internet packet loss — last 48 hours</h2>
+    <p class="note">Each bar is one 5-minute sample. Tall/red = lots of data lost. Grey = sampled while on a different network (e.g. a 5G hotspot), not the fiber line.</p>
+    <svg class="chart" id="timeline" viewBox="0 0 1000 220" preserveAspectRatio="none" role="img" aria-label="Packet loss timeline"></svg>
+    <div class="legend">
+      <span><i style="background:#0f7a4d"></i>0–5%</span>
+      <span><i style="background:#caa23a"></i>5–20%</span>
+      <span><i style="background:#d9822b"></i>20–40%</span>
+      <span><i style="background:#c2391b"></i>40%+</span>
+      <span><i style="background:#c9d2dd"></i>other network</span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Average loss by hour of day</h2>
+    <p class="note">Reveals whether slowdowns cluster at certain times (e.g. busy evenings = shared-line congestion) or are steady around the clock (a constant physical problem).</p>
+    <svg class="chart" id="byhour" viewBox="0 0 1000 200" role="img" aria-label="Average loss by hour"></svg>
+  </section>
+
+  <section class="panel">
+    <h2>Average loss by day of week</h2>
+    <svg class="chart" id="bydow" viewBox="0 0 1000 170" role="img" aria-label="Average loss by day"></svg>
+  </section>
+
+  <footer>
+    <p>Auto-refreshes every 60 seconds. Data: a Mac mini runs <code>ping</code>/<code>traceroute</code> samples and publishes to Vercel Blob; this page reads that feed. Sampling only covers times the Mac is awake (it is normally always-on). &middot; <a href="https://ifnotfor.com/TaxiII-Fiber-Troubleshooting/2026-06-03">← Back to the full troubleshooting report</a></p>
+  </footer>
+</div>
+
+<script>
+const FEED = "https://dpqowy9fi5mduqcm.public.blob.vercel-storage.com/fiber/status.json";
+const FIBER_GW = "192.168.0.1";
+
+const lossColor = (v) => v==null ? "#c9d2dd"
+  : v<5 ? "#0f7a4d" : v<20 ? "#caa23a" : v<40 ? "#d9822b" : "#c2391b";
+const esc = (s)=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+function ago(iso){
+  const s = Math.max(0,(Date.now()-new Date(iso).getTime())/1000);
+  if(s<90) return Math.round(s)+"s ago";
+  if(s<5400) return Math.round(s/60)+" min ago";
+  return Math.round(s/3600)+" h ago";
+}
+
+function cards(d){
+  const L = d.latest||{};
+  const onFiber = L.gwip===FIBER_GW;
+  const c = [
+    {k:"Internet packet loss", v: L.i==null?"—":L.i+"%", s:"latest sample", col:lossColor(L.i)},
+    {k:"Latency", v: L.ra==null?"—":Math.round(L.ra)+" ms", s: L.rm==null?"":"peak "+Math.round(L.rm)+" ms"},
+    {k:"Wi-Fi signal", v: L.rssi==null?"—":L.rssi+" dBm", s: L.tx?("link "+L.tx+" Mbps"):""},
+    {k:"Network", v: onFiber?"Fiber":"Other", s: onFiber?"Quantum / Axon gateway":"e.g. hotspot — excluded"},
+  ];
+  document.getElementById("cards").innerHTML = c.map(x=>
+    `<div class="c"><p class="k">${esc(x.k)}</p><p class="v" ${x.col?`style="color:${x.col}"`:""}>${esc(x.v)}</p><p class="s">${esc(x.s)}</p></div>`
+  ).join("");
+}
+
+function timeline(d){
+  const s = d.samples||[]; const W=1000,H=220,pad=22, gw=H-pad*2;
+  const n = s.length||1; const bw = (W-pad*2)/n;
+  let bars="";
+  s.forEach((r,idx)=>{
+    const v = r.i; const other = r.gwip && r.gwip!==FIBER_GW;
+    const h = v==null?2:Math.max(2,(v/100)*gw);
+    const x = pad+idx*bw; const y = H-pad-h;
+    bars += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${Math.max(0.8,bw-0.3).toFixed(2)}" height="${h.toFixed(1)}" fill="${other?'#c9d2dd':lossColor(v)}"></rect>`;
+  });
+  // gridlines at 25/50/75/100
+  let grid="";
+  [0,25,50,75,100].forEach(p=>{ const y=H-pad-(p/100)*gw; grid+=`<line x1="${pad}" y1="${y}" x2="${W-pad}" y2="${y}" stroke="#eef2f7"></line><text class="axis" x="2" y="${y+3}">${p}%</text>`;});
+  const first=s[0], last=s[s.length-1];
+  const t0=first?new Date(first.t):null, t1=last?new Date(last.t):null;
+  const fmt=(dt)=>dt?dt.toLocaleString([], {month:"short",day:"numeric",hour:"numeric"}):"";
+  const xl=`<text class="axis" x="${pad}" y="${H-4}">${esc(fmt(t0))}</text><text class="axis" x="${W-pad}" y="${H-4}" text-anchor="end">${esc(fmt(t1))}</text>`;
+  document.getElementById("timeline").innerHTML = grid+bars+xl;
+}
+
+function barChart(elId, items, labelFn){
+  const W=1000,H=elId==="bydow"?170:200,pad=26,top=14;
+  const plot=H-pad-top; const n=items.length||1; const slot=(W-pad*1.2)/n;
+  let g="";[0,25,50,75,100].forEach(p=>{const y=top+plot-(p/100)*plot;g+=`<line x1="${pad}" y1="${y}" x2="${W-6}" y2="${y}" stroke="#eef2f7"></line><text class="axis" x="2" y="${y+3}">${p}%</text>`;});
+  let bars="";
+  items.forEach((it,idx)=>{
+    const v=it.avg; const h=v==null?1:Math.max(1,(v/100)*plot);
+    const x=pad+idx*slot+slot*0.18; const w=slot*0.64; const y=top+plot-h;
+    bars+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" rx="2" fill="${lossColor(v)}"></rect>`;
+    bars+=`<text class="barlabel" x="${(x+w/2).toFixed(1)}" y="${(y-3).toFixed(1)}" text-anchor="middle">${v==null?"":v+"%"}</text>`;
+    bars+=`<text class="axis" x="${(x+w/2).toFixed(1)}" y="${H-6}" text-anchor="middle">${esc(labelFn(it))}</text>`;
+  });
+  document.getElementById(elId).innerHTML=g+bars;
+}
+
+const DOW=["","Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+async function load(){
+  try{
+    const bust=Math.floor(Date.now()/60000);
+    const r=await fetch(FEED+"?cb="+bust,{cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const d=await r.json();
+    document.getElementById("err").style.display="none";
+    document.getElementById("updated").innerHTML=`<span class="dot"></span>Updated ${esc(ago(d.updated))} &middot; ${d.total} samples logged`;
+    cards(d);
+    timeline(d);
+    barChart("byhour",(d.byHour||[]).slice().sort((a,b)=>a.hour-b.hour),it=>String(it.hour).padStart(2,"0"));
+    barChart("bydow",(d.byDow||[]).slice().sort((a,b)=>a.dow-b.dow),it=>DOW[it.dow]||it.dow);
+  }catch(e){
+    const el=document.getElementById("err");
+    el.style.display="block";
+    el.textContent="Couldn't load live data ("+e.message+"). It refreshes automatically — if this persists, the monitor may be offline.";
+  }
+}
+load();
+setInterval(load,60000);
+</script>
+</body>
+</html>

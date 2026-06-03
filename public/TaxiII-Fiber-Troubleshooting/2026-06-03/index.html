@@ -139,7 +139,7 @@
       <p class="addr-v">Taxi II &middot; 3457 Ringsby Ct &middot; Denver, Colorado 80216</p>
     </div>
 
-    <p class="audience">I wrote this so it&rsquo;s useful to <b>anyone on the building&rsquo;s board, the team at Axon Networks, and Quantum Fiber</b> — whatever your technical background. <b>The entire report runs in two columns:</b> the left side explains each point in plain English, and the right side gives the same point in full technical detail. Read whichever side suits you.</p>
+    <p class="audience">I wrote this so it&rsquo;s useful to <b>anyone on the building&rsquo;s board, the team at Axon Networks (the building&rsquo;s managed-Wi-Fi / MDU provider), and Quantum Fiber (my internet service provider)</b> — whatever your technical background. <b>The entire report runs in two columns:</b> the left side explains each point in plain English, and the right side gives the same point in full technical detail. Read whichever side suits you.</p>
 
     <div class="meta-grid">
       <div><p class="k">Date of tests</p><p class="v">June 3, 2026</p></div>
@@ -163,13 +163,13 @@
       <span class="chip simple">Plain English</span>
       <h3>Start here — and thank you</h3>
       <p>Thank you for taking the time. My home internet is supposed to be 1 gigabit, but lately it keeps dropping to <b>5–75 Mbps</b> — slow enough to be a real problem, and it&rsquo;s happening on all three of my devices.</p>
-      <p>Before reaching out, I ran my own tests so I could hand you something concrete instead of just &ldquo;it feels slow.&rdquo; Everything on this left side is in plain English; the same point appears in full technical detail on the right. Both say the same thing.</p>
+      <p>Before reaching out, I ran a thorough set of tests — <b>with the help of Claude AI</b> — so I could hand you something concrete instead of just &ldquo;it feels slow.&rdquo; Everything on this left side is in plain English; the same point appears in full technical detail on the right. Both say the same thing.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
       <h3>Scope &amp; method</h3>
       <p>A 1 Gbps fiber plan is intermittently delivering <b>5–75 Mbps</b> (recovering to 500–600 Mbps) across three Wi-Fi clients, <b>first noticed</b> on/about June 1, 2026 — earlier sub-threshold episodes can&rsquo;t be ruled out — with no clear diurnal pattern.</p>
-      <p>All diagnostics were run <b>June 3, 2026</b> from a single macOS client associated to the building Wi-Fi (no wired drop exists in the unit), using <code>ping</code>, <code>traceroute</code>, <code>system_profiler</code>, <code>netstat</code>, and <code>openssl</code>. Exact figures and reasoning are on this side; raw output is in the final row.</p>
+      <p>All diagnostics were run <b>June 3, 2026</b> (conducted collaboratively with <b>Claude AI</b>, Anthropic) from a single macOS client associated to the building Wi-Fi (no wired drop exists in the unit), using <code>ping</code>, <code>traceroute</code>, <code>system_profiler</code>, <code>netstat</code>, and <code>openssl</code>. Exact figures and reasoning are on this side; raw output is in the final row.</p>
     </div>
   </div>
 
@@ -274,7 +274,7 @@
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>The first box is building-managed equipment</h3>
-      <p>The box that gives me internet is not a standard home router — it is <b>equipment managed by the building&rsquo;s network provider</b>. I was told my apartment was connected by <b>&ldquo;splitting an existing pipe&rdquo;</b> because they had run out of separate lines.</p>
+      <p>The box that gives me internet is not a standard home router — it is <b>equipment managed by the building&rsquo;s managed-Wi-Fi provider, Axon Networks</b>. I was told my apartment was connected by <b>&ldquo;splitting an existing pipe&rdquo;</b> because they had run out of separate lines.</p>
       <p>That kind of shared or split connection is worth a close look, because it can introduce exactly the sort of losses I&rsquo;m seeing. I can&rsquo;t inspect this box myself — it needs a login that the building and provider control.</p>
     </div>
     <div class="col tech">
@@ -285,7 +285,7 @@
         <li>MAC <code>00:58:28:6c:89:83</code> &rarr; OUI <b>Axon Networks Inc.</b> (managed Wi-Fi / MDU vendor).</li>
         <li>TLS cert <code>O=GWS SW, CN=CPE</code> (Irvine, CA), self-signed, issued <b>2026-04-08</b>; <code>lighttpd</code>; admin UI login-gated.</li>
       </ul>
-      <p>Because my unit was wired by &ldquo;splitting an existing pipe,&rdquo; plausible upstream causes include an <b>added optical splitter reducing the ONT optical budget</b> (low Rx power &rarr; FEC/CRC errors) or a <b>shared/over-subscribed run</b>. The decisive data — <b>optical Rx/Tx power (dBm), FEC/CRC/uncorrectable counters, PON utilization</b> — sits behind the managed-CPE login and must be pulled by Quantum and/or Axon.</p>
+      <p>Because my unit was wired by &ldquo;splitting an existing pipe,&rdquo; plausible upstream causes include an <b>added optical splitter reducing the ONT optical budget</b> (low Rx power &rarr; FEC/CRC errors) or a <b>shared/over-subscribed run</b>. The decisive data — <b>optical Rx/Tx power (dBm), FEC/CRC/uncorrectable counters, PON utilization</b> — sits behind the managed-CPE login and must be pulled by <b>Quantum Fiber</b> (the fiber ISP) and/or <b>Axon Networks</b> (the managed-MDU operator).</p>
     </div>
   </div>
 
@@ -309,13 +309,13 @@
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>What I&rsquo;m hoping you can check</h3>
-      <p>Since the equipment is partly building-managed, some of this may need the property/Axon and Quantum to talk to each other. I&rsquo;m glad to help and to run any further tests you suggest. With thanks:</p>
+      <p>Since the equipment is partly building-managed, some of this may need the building&rsquo;s managed-Wi-Fi provider (<b>Axon Networks</b>) and my internet service provider (<b>Quantum Fiber</b>) to talk to each other. I&rsquo;m glad to help and to run any further tests you suggest. With thanks:</p>
       <ul class="bul">
         <li>Confirm my plan really is set up for <b>1 gigabit</b>.</li>
         <li>Check the <b>health and signal of the fiber line</b> coming into my unit.</li>
         <li>Take a close look at the <b>recently &ldquo;split&rdquo; connection</b> that was used to hook me up.</li>
         <li>Check whether I&rsquo;m <b>sharing the line</b> with others in a way that slows it down.</li>
-        <li>Get the <b>building&rsquo;s provider (Axon) and Quantum talking</b> so nothing falls between the cracks.</li>
+        <li>Get the <b>building&rsquo;s managed-Wi-Fi provider (Axon Networks) and my ISP (Quantum Fiber) talking</b> so nothing falls between the cracks.</li>
       </ul>
     </div>
     <div class="col tech">
@@ -326,12 +326,28 @@
         <li><b>Optical &amp; errors:</b> read <b>optical Rx power (dBm)</b> and <b>FEC/CRC/uncorrectable counters</b> at the ONT/CPE for my unit. Low Rx power or rising errors confirm a degraded physical feed.</li>
         <li><b>The split feed:</b> verify whether a splitter, shared run, or marginal splice was introduced at connect time, and whether it&rsquo;s within optical-budget spec.</li>
         <li><b>Sharing:</b> check for over-subscription on that PON segment that could cause intermittent loss under neighbor load.</li>
-        <li><b>Ownership:</b> coordinate Axon (gateway/AP + backhaul) with Quantum (fiber feed) so all layers are examined together.</li>
+        <li><b>Ownership:</b> coordinate <b>Axon Networks</b> (managed-MDU: gateway/AP + backhaul) with <b>Quantum Fiber</b> (fiber ISP: optical feed) so all layers are examined together.</li>
       </ul>
     </div>
   </div>
 
-  <!-- Row 9: Raw evidence -->
+  <!-- Row 9: Who takes it from here -->
+  <div class="row">
+    <div class="col simple">
+      <span class="chip simple">Plain English</span>
+      <h3>I&rsquo;ve reached the limit of what I can do</h3>
+      <p>I took this investigation as far as I could on my own (with the help of <b>Claude AI</b>), and I don&rsquo;t think there&rsquo;s much more I can do from inside my apartment — the next step really needs someone genuinely technical who can get at the equipment.</p>
+      <p>Honestly, I&rsquo;m not sure who that should be. It might be <b>Axon Networks</b> (the building&rsquo;s managed-Wi-Fi provider), <b>Quantum Fiber</b> (my internet service provider), a technically expert neighbor like <b>Derek in unit 108</b>, or an <b>independent contractor</b> who handles these kinds of problems. I&rsquo;d be grateful for a steer on who&rsquo;s best placed to pick it up.</p>
+    </div>
+    <div class="col tech">
+      <span class="chip tech">Technical</span>
+      <h3>The next step needs hands-on access I don&rsquo;t have</h3>
+      <p>This was diagnosed collaboratively with <b>Claude AI</b>, but the remaining work is beyond what I can probe as an end user: it needs admin access to the <b>Axon Networks</b> managed CPE and the <b>Quantum Fiber</b> ONT to read optical levels, error counters, and the physical/split-feed layout.</p>
+      <p>Resolving it likely calls for managed-MDU / PON expertise — <b>Axon Networks</b> (managed-Wi-Fi / MDU operator), <b>Quantum Fiber</b> (fiber ISP), a qualified resident (e.g. <b>Derek, unit 108</b>), or an independent low-voltage / fiber contractor. I&rsquo;m happy to grant access or run further tests on request.</p>
+    </div>
+  </div>
+
+  <!-- Row 10: Raw evidence -->
   <div class="row">
     <div class="col simple">
       <span class="chip simple">Plain English</span>
@@ -390,7 +406,7 @@ Server: lighttpd   <span class="c"># login-gated managed device</span></pre>
   </div>
 
   <footer>
-    <p>Prepared by Ted Pearlman on June 3, 2026 — Taxi II, 3457 Ringsby Ct, Denver, Colorado 80216 — from direct measurements on a representative device in my home. Figures are presented as measured; intermediate-hop ICMP loss is noted as indicative, while end-to-end loss to public anchors is treated as authoritative. I&rsquo;m grateful for your time and assistance, and I&rsquo;m glad to run any additional diagnostics that would help. &mdash; Thank you.</p>
+    <p>Prepared by Ted Pearlman on June 3, 2026, with diagnostic assistance from <b>Claude AI</b> (Anthropic) — Taxi II, 3457 Ringsby Ct, Denver, Colorado 80216 — from direct measurements on a representative device in my home. Figures are presented as measured; intermediate-hop ICMP loss is noted as indicative, while end-to-end loss to public anchors is treated as authoritative. I&rsquo;m grateful for your time and assistance, and I&rsquo;m glad to run any additional diagnostics that would help. &mdash; Thank you.</p>
   </footer>
 
 </div>

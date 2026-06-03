@@ -29,11 +29,15 @@
     color:#fff; padding:40px 0 34px; margin-bottom:26px;
   }
   header.masthead .wrap{padding-bottom:0}
-  .eyebrow{font-size:13px; letter-spacing:.12em; text-transform:uppercase; opacity:.82; margin:0 0 10px}
+  .eyebrow{font-size:13px; letter-spacing:.1em; text-transform:uppercase; opacity:.82; margin:0 0 10px}
   header.masthead h1{font-size:30px; line-height:1.2; margin:0 0 12px; font-weight:700}
   header.masthead p.lede{font-size:17px; opacity:.94; margin:0; max-width:760px}
+  .addr{margin-top:20px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:10px; padding:12px 16px; display:inline-block}
+  .addr-k{margin:0 0 2px; font-size:11px; text-transform:uppercase; letter-spacing:.1em; opacity:.8}
+  .addr-v{margin:0; font-size:18px; font-weight:700; line-height:1.35}
+  .audience{margin:18px 0 0; font-size:14.5px; opacity:.95; max-width:800px}
   .meta-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:24px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:22px;
   }
   .meta-grid div{background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.16); border-radius:10px; padding:11px 13px}
   .meta-grid .k{font-size:11px; text-transform:uppercase; letter-spacing:.08em; opacity:.78; margin:0 0 3px}
@@ -128,6 +132,7 @@
     .wrap{padding:0 14px 48px}
     header.masthead h1{font-size:24px}
     header.masthead p.lede{font-size:15.5px}
+    .addr-v{font-size:16px}
     .meta-grid{grid-template-columns:1fr 1fr; gap:10px}
     .colheads{display:none}
     .finding{grid-template-columns:1fr; gap:10px; margin-bottom:22px;
@@ -147,14 +152,22 @@
 
 <header class="masthead">
   <div class="wrap">
-    <p class="eyebrow">Residential Internet Diagnostics &middot; Prepared for Quantum Fiber</p>
-    <h1>Gigabit service is delivering 50–100 Mbps during heavy packet loss</h1>
-    <p class="lede">A friendly, evidence-based summary of what we measured on our Quantum Fiber connection in Denver — written in two versions side by side so it is useful to both a non-technical reader and a network engineer. Thank you in advance for taking a look.</p>
+    <p class="eyebrow">Residential Internet Diagnostics &middot; For the Building Board, Axon Networks &amp; Quantum Fiber</p>
+    <h1>My gigabit service is delivering 50–100 Mbps during heavy packet loss</h1>
+    <p class="lede">This is a friendly, evidence-based summary of what I measured on my home internet connection. I did a fair amount of testing myself first, so I could share something concrete rather than just &ldquo;the internet feels slow.&rdquo; Thank you in advance for taking a look.</p>
+
+    <div class="addr">
+      <p class="addr-k">Where the problem is</p>
+      <p class="addr-v">Taxi II &middot; 3457 Ringsby Ct &middot; Denver, Colorado 80216</p>
+    </div>
+
+    <p class="audience">I wrote this so it&rsquo;s useful to <b>anyone on the building&rsquo;s board, the team at Axon Networks, and Quantum Fiber</b> — whatever your technical background. Every finding is shown in <b>two versions, side by side: an easy-to-grasp plain-English version and a highly technical version.</b></p>
+
     <div class="meta-grid">
       <div><p class="k">Date of tests</p><p class="v">June 3, 2026</p></div>
-      <div><p class="k">Location</p><p class="v">Denver, CO</p></div>
       <div><p class="k">Subscribed plan</p><p class="v">1 Gbps fiber</p></div>
-      <div><p class="k">Symptom</p><p class="v">Speed drops to 50–100 Mbps</p></div>
+      <div><p class="k">Symptom</p><p class="v">Drops to 50–100 Mbps</p></div>
+      <div><p class="k">Devices affected</p><p class="v">3 (all Wi-Fi)</p></div>
     </div>
   </div>
 </header>
@@ -162,15 +175,15 @@
 <div class="wrap">
 
   <div class="note greeting">
-    <p style="margin:0"><b>Hello, and thank you for reading.</b> We genuinely appreciate your help. We have done a fair amount of testing on our end first, so that we could hand you something concrete rather than just &ldquo;the internet feels slow.&rdquo; Everything below is what we actually measured today. We have tried to be precise and fair — including noting the limits of what we can see from inside the apartment. We would be grateful for your guidance on next steps.</p>
+    <p style="margin:0"><b>Hello, and thank you for reading.</b> I genuinely appreciate your help. I&rsquo;ve done a fair amount of testing on my end first, so that I could hand you something concrete rather than just &ldquo;the internet feels slow.&rdquo; Everything below is what I actually measured today. I&rsquo;ve tried to be precise and fair — including noting the limits of what I can see from inside my apartment. I&rsquo;d be grateful for your guidance on next steps.</p>
   </div>
 
   <div class="tldr">
     <h2>The short version</h2>
     <ul>
-      <li><span class="pill green">Good</span> &nbsp;Our Wi-Fi signal and our own devices are <b>not</b> the problem — the wireless link is excellent (strong signal, full-speed connection).</li>
+      <li><span class="pill green">Good</span> &nbsp;My Wi-Fi signal and my own devices are <b>not</b> the problem — the wireless link is excellent (strong signal, full-speed connection).</li>
       <li><span class="pill red">Problem</span> &nbsp;The connection is <b>losing a large share of its data packets — roughly 20% to 56%</b> in repeated tests. That alone is enough to drag a 1 Gbps line down to 50–100 Mbps, because the loss forces the connection to keep slowing itself down.</li>
-      <li><span class="pill amber">Context</span> &nbsp;The loss <b>begins at the very first device</b> our traffic reaches and <b>grows as it travels upstream</b>. This device is <b>building-managed equipment</b>, and our unit was reportedly connected by &ldquo;splitting an existing pipe&rdquo; — a detail worth investigating.</li>
+      <li><span class="pill amber">Context</span> &nbsp;The loss <b>begins at the very first device</b> my traffic reaches and <b>grows as it travels upstream</b>. This device is <b>building-managed equipment</b>, and my unit was reportedly connected by &ldquo;splitting an existing pipe&rdquo; — a detail worth investigating.</li>
       <li><span class="pill green">New</span> &nbsp;This is <b>recent</b>. The same laptop tested clean (0% loss) just a few days ago, on May 30, 2026.</li>
     </ul>
   </div>
@@ -181,7 +194,7 @@
 
   <div class="tablecard">
     <table>
-      <caption>1 &middot; Wi-Fi link quality (this laptop &rarr; the local gateway)</caption>
+      <caption>1 &middot; Wi-Fi link quality (my laptop &rarr; the local gateway)</caption>
       <thead><tr><th>What</th><th>Reading</th><th>Verdict</th></tr></thead>
       <tbody>
         <tr><td>Wi-Fi standard</td><td>Wi-Fi 6 (802.11ax)</td><td class="good">Modern</td></tr>
@@ -192,14 +205,14 @@
       </tbody>
     </table>
   </div>
-  <p class="small">Takeaway: the air link between our device and the gateway is essentially perfect. This rules out distance, interference at the device, weak signal, or old hardware as the cause.</p>
+  <p class="small">Takeaway: the air link between my device and the gateway is essentially perfect. This rules out distance, interference at the device, weak signal, or old hardware as the cause.</p>
 
   <div class="tablecard">
     <table>
       <caption>2 &middot; Packet loss along the path — two samples about 20 minutes apart</caption>
       <thead><tr><th>Point on the path</th><th>What it is</th><th>Sample A</th><th>Sample B</th></tr></thead>
       <tbody>
-        <tr><td>192.168.0.1</td><td>Our gateway (building-managed)</td><td class="mid">23%</td><td class="bad">32–42%</td></tr>
+        <tr><td>192.168.0.1</td><td>My gateway (building-managed)</td><td class="mid">23%</td><td class="bad">32–42%</td></tr>
         <tr><td>207.225.112.17</td><td>Quantum / Lumen — 1st hop</td><td class="mid">23%</td><td class="bad">40%</td></tr>
         <tr><td>63.225.124.129</td><td>Quantum / Lumen — 2nd hop</td><td class="bad">33%</td><td>—</td></tr>
         <tr><td>1.1.1.1</td><td>Internet (Cloudflare)</td><td class="bad">20–45%</td><td class="bad">56%</td></tr>
@@ -210,9 +223,9 @@
   <p class="small">Takeaway: loss is present from the very first hop and accumulates downstream. Latency, by contrast, was usually low (3–13 ms) — so this is a <i>loss</i> problem, not a congestion/latency problem.</p>
 
   <!-- ===== Column headers for the side-by-side findings ===== -->
-  <h2 class="section">What we found — in two levels of detail</h2>
+  <h2 class="section">What I found — in two levels of detail</h2>
   <div class="colheads">
-    <div class="colhead simple">For a Non-Technical Reader<small>e.g. a customer-service agent or an HOA board member</small></div>
+    <div class="colhead simple">For a Non-Technical Reader<small>e.g. a building board member or a front-line support agent</small></div>
     <div class="colhead tech">For a Network Engineer<small>full technical detail &amp; raw evidence</small></div>
   </div>
 
@@ -220,9 +233,9 @@
   <div class="finding">
     <div class="col simple">
       <span class="chip simple">Plain English</span>
-      <h3>Our Wi-Fi and devices are healthy</h3>
-      <p>We checked the wireless connection between our laptop and the box that provides our internet. The signal is very strong — about as good as it gets — and the laptop is connecting at full speed.</p>
-      <p>So the trouble is <b>not</b> our gadgets, not the distance to the router, and not old equipment. Something further along the line is the issue.</p>
+      <h3>My Wi-Fi and devices are healthy</h3>
+      <p>I checked the wireless connection between my laptop and the box that provides my internet. The signal is very strong — about as good as it gets — and the laptop is connecting at full speed.</p>
+      <p>So the trouble is <b>not</b> my gadgets, not the distance to the router, and not old equipment. Something further along the line is the issue.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
@@ -237,7 +250,7 @@
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>A lot of data is getting lost</h3>
-      <p>Think of the connection as a delivery route. When we sent test packages along it, <b>somewhere between 1-in-5 and more than half never arrived.</b></p>
+      <p>Think of the connection as a delivery route. When I sent test packages along it, <b>somewhere between 1-in-5 and more than half never arrived.</b></p>
       <p>When that happens, the internet automatically slows everything down to cope. That is exactly why a 1-gigabit line ends up feeling like 50–100 Mbps: the speed is fine, but the losses keep forcing it to throttle back.</p>
     </div>
     <div class="col tech">
@@ -253,8 +266,8 @@
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>The losses start right at the first box</h3>
-      <p>We traced the route step by step. The losses are already happening at the <b>very first piece of equipment</b> our connection touches — and they get <i>worse</i> as the data travels onward toward the wider internet.</p>
-      <p>That points the finger at the equipment and wiring closest to us, rather than at the far-off internet.</p>
+      <p>I traced the route step by step. The losses are already happening at the <b>very first piece of equipment</b> my connection touches — and they get <i>worse</i> as the data travels onward toward the wider internet.</p>
+      <p>That points the finger at the equipment and wiring closest to me, rather than at the far-off internet.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
@@ -269,8 +282,8 @@
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>The first box is building-managed equipment</h3>
-      <p>The box that gives us internet is not a standard home router — it is <b>equipment managed by the building's network provider</b>. We were told our apartment was connected by <b>&ldquo;splitting an existing pipe&rdquo;</b> because they had run out of separate lines.</p>
-      <p>That kind of shared or split connection is worth a close look, because it can introduce exactly the sort of losses we are seeing. We cannot inspect this box ourselves — it requires a login the building/provider controls.</p>
+      <p>The box that gives me internet is not a standard home router — it is <b>equipment managed by the building's network provider</b>. I was told my apartment was connected by <b>&ldquo;splitting an existing pipe&rdquo;</b> because they had run out of separate lines.</p>
+      <p>That kind of shared or split connection is worth a close look, because it can introduce exactly the sort of losses I am seeing. I cannot inspect this box myself — it requires a login that the building and provider control.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
@@ -280,7 +293,7 @@
         <li>MAC <code>00:58:28:6c:89:83</code> &rarr; OUI <b>Axon Networks Inc.</b> (managed Wi-Fi / MDU vendor).</li>
         <li>TLS cert <code>O=GWS SW, CN=CPE</code> (Irvine, CA), self-signed, issued <b>2026-04-08</b>; server <code>lighttpd</code>; admin UI is login-gated.</li>
       </ul>
-      <p>Because the resident has &ldquo;split an existing pipe&rdquo; for service, plausible upstream causes include an <b>added optical splitter reducing the ONT optical budget</b> (low Rx power &rarr; FEC/CRC errors) or a <b>shared/over-subscribed physical run</b>. The decisive data — <b>optical Rx/Tx power (dBm), FEC/CRC/uncorrectable counters, and PON utilization</b> — sits behind the managed-CPE login and must be pulled by Quantum and/or the property's managed-network operator (Axon).</p>
+      <p>Because my unit was wired by &ldquo;splitting an existing pipe,&rdquo; plausible upstream causes include an <b>added optical splitter reducing the ONT optical budget</b> (low Rx power &rarr; FEC/CRC errors) or a <b>shared/over-subscribed physical run</b>. The decisive data — <b>optical Rx/Tx power (dBm), FEC/CRC/uncorrectable counters, and PON utilization</b> — sits behind the managed-CPE login and must be pulled by Quantum and/or the property's managed-network operator (Axon).</p>
     </div>
   </div>
 
@@ -289,31 +302,31 @@
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>It is new, and it comes and goes</h3>
-      <p>This started only this week, with no obvious time-of-day pattern. The very same laptop tested perfectly clean just a few days ago. And it affects <b>all three of our devices</b>, which all connect wirelessly through that same building box.</p>
+      <p>This started only this week, with no obvious time-of-day pattern. The very same laptop tested perfectly clean just a few days ago. And it affects <b>all three of my devices</b>, which all connect wirelessly through that same building box.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
       <h3>Regression vs. a known-clean baseline</h3>
-      <p>Baseline on the <i>same</i> client, <b>May 30, 2026</b>: ~280 Mbps download, <b>0% loss</b>, low latency, no bufferbloat under load. Today's heavy loss is therefore a <b>recent regression</b>, not a longstanding condition. Loss rates are non-stationary (23% &rarr; 56% within ~20 min), and all household clients share the same managed AP, so a shared upstream impairment explains the fleet-wide, intermittent symptom.</p>
+      <p>Baseline on the <i>same</i> client, <b>May 30, 2026</b>: ~280 Mbps download, <b>0% loss</b>, low latency, no bufferbloat under load. Today's heavy loss is therefore a <b>recent regression</b>, not a longstanding condition. Loss rates are non-stationary (23% &rarr; 56% within ~20 min), and all my devices share the same managed AP, so a shared upstream impairment explains the fleet-wide, intermittent symptom.</p>
     </div>
   </div>
 
-  <!-- ===== What we're asking ===== -->
-  <h2 class="section">What we would respectfully ask Quantum to check</h2>
+  <!-- ===== What I'm asking ===== -->
+  <h2 class="section">What I would respectfully ask you to check</h2>
   <div class="note">
-    <p>We know the equipment may be partly building-managed, so some of this may need coordination with the property's network provider. We are happy to help however we can — including running any further tests you suggest. With thanks:</p>
+    <p>I know the equipment is partly building-managed, so some of this may need coordination between the property/Axon Networks and Quantum Fiber. I&rsquo;m happy to help however I can — including running any further tests you suggest. With thanks:</p>
     <ol class="ask">
-      <li><b>Confirm our line is provisioned for 1 Gbps</b> and that the account/ONT shows the expected service profile.</li>
-      <li><b>Read the optical and error statistics</b> at the ONT/CPE for our unit — particularly <b>optical receive power (dBm)</b> and <b>FEC/CRC / uncorrectable-error counters</b>. Low optical power or rising error counts would confirm a degraded physical feed.</li>
-      <li><b>Investigate the recently &ldquo;split&rdquo; feed</b> serving our apartment — whether a splitter, shared run, or marginal splice was introduced when our unit was connected, and whether it is within optical-budget spec.</li>
+      <li><b>Confirm my line is provisioned for 1 Gbps</b> and that the account/ONT shows the expected service profile.</li>
+      <li><b>Read the optical and error statistics</b> at the ONT/CPE for my unit — particularly <b>optical receive power (dBm)</b> and <b>FEC/CRC / uncorrectable-error counters</b>. Low optical power or rising error counts would confirm a degraded physical feed.</li>
+      <li><b>Investigate the recently &ldquo;split&rdquo; feed</b> serving my apartment — whether a splitter, shared run, or marginal splice was introduced when my unit was connected, and whether it is within optical-budget spec.</li>
       <li><b>Check for sharing / over-subscription</b> on that segment that could cause intermittent loss when neighboring usage is high.</li>
-      <li><b>Coordinate with the property's managed-network provider (Axon Networks)</b> if the gateway is managed, so the AP and its backhaul can be examined as well.</li>
+      <li><b>Coordinate between the property&rsquo;s managed-network provider (Axon Networks) and Quantum Fiber</b> so the gateway/AP, its backhaul, and the fiber feed can all be examined together.</li>
     </ol>
   </div>
 
   <!-- ===== Appendix ===== -->
   <h2 class="section">Appendix — raw test output</h2>
-  <p class="small">For the technically inclined. All tests were run on June 3, 2026 from a macOS laptop connected by Wi-Fi to the gateway (no wired option is available in the unit). Tools: <code>ping</code>, <code>traceroute</code>, <code>system_profiler</code>, <code>netstat</code>, <code>openssl</code>.</p>
+  <p class="small">For the technically inclined. All tests were run on June 3, 2026 from a macOS laptop connected by Wi-Fi to the gateway (no wired option is available in my unit). Tools: <code>ping</code>, <code>traceroute</code>, <code>system_profiler</code>, <code>netstat</code>, <code>openssl</code>.</p>
 
   <details open>
     <summary>Path trace &amp; packet loss</summary>
@@ -364,7 +377,7 @@ Server: lighttpd            <span class="c"># admin UI is login-gated (managed d
   </details>
 
   <footer>
-    <p>Prepared June 3, 2026 in Denver, CO, from direct measurements on a representative household device. Figures are presented as measured; intermediate-hop ICMP loss is noted as indicative while end-to-end loss to public anchors is treated as authoritative. We are grateful for Quantum Fiber's time and assistance, and we are glad to run any additional diagnostics that would help. &mdash; Thank you.</p>
+    <p>Prepared by Ted Pearlman on June 3, 2026 — Taxi II, 3457 Ringsby Ct, Denver, Colorado 80216 — from direct measurements on a representative device in my home. Figures are presented as measured; intermediate-hop ICMP loss is noted as indicative, while end-to-end loss to public anchors is treated as authoritative. I&rsquo;m grateful for your time and assistance, and I&rsquo;m glad to run any additional diagnostics that would help. &mdash; Thank you.</p>
   </footer>
 
 </div>

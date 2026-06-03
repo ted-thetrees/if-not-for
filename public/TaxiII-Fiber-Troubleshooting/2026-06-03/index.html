@@ -169,7 +169,7 @@
       <span class="chip tech">Technical</span>
       <h3>Scope &amp; method</h3>
       <p>A 1 Gbps fiber plan is intermittently delivering <b>5–75 Mbps</b> (recovering to 500–600 Mbps) across three Wi-Fi clients, <b>first noticed</b> on/about June 1, 2026 — earlier sub-threshold episodes can&rsquo;t be ruled out — with no clear diurnal pattern.</p>
-      <p>All diagnostics were run <b>June 3, 2026</b> (conducted collaboratively with <b>Claude AI</b>, Anthropic) from a single macOS client associated to the building Wi-Fi (no wired drop exists in the unit), using <code>ping</code>, <code>traceroute</code>, <code>system_profiler</code>, <code>netstat</code>, and <code>openssl</code>. Exact figures and reasoning are on this side; raw output is in the final row.</p>
+      <p>All diagnostics were run <b>June 3, 2026</b> (conducted collaboratively with <b>Claude AI</b>, Anthropic) from a single always-on Mac mini (macOS) associated to the building Wi-Fi (no wired drop is available in the unit), using <code>ping</code>, <code>traceroute</code>, <code>system_profiler</code>, <code>netstat</code>, and <code>openssl</code>. Exact figures and reasoning are on this side; raw output is in the final row.</p>
     </div>
   </div>
 
@@ -182,7 +182,7 @@
         <li><span class="pill green">Good</span> My Wi-Fi and my devices are fine — strong signal, full-speed wireless.</li>
         <li><span class="pill red">Problem</span> A large share of my data — roughly <b>20% to 56%</b> in repeated tests — is getting lost in transit. That alone drags gigabit down to 5–75 Mbps.</li>
         <li><span class="pill amber">Context</span> The loss begins at the <b>very first box</b> my connection reaches. That box is building-managed, and my unit was connected by &ldquo;splitting an existing pipe.&rdquo;</li>
-        <li><span class="pill green">New</span> This is the first week I <i>noticed</i> it. Earlier dips may have gone unnoticed when I wasn&rsquo;t using much bandwidth — but the same laptop tested perfectly clean on May 30.</li>
+        <li><span class="pill green">New</span> This is the first week I <i>noticed</i> it. Earlier dips may have gone unnoticed when I wasn&rsquo;t using much bandwidth — but the same Mac tested perfectly clean on May 30.</li>
       </ul>
     </div>
     <div class="col tech">
@@ -202,7 +202,7 @@
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>My Wi-Fi and devices are healthy</h3>
-      <p>The first thing I checked was the wireless link between my laptop and the box that gives me internet. It&rsquo;s about as good as Wi-Fi gets — a very strong signal, connecting at full speed.</p>
+      <p>The first thing I checked was the wireless link between my Mac and the box that gives me internet. It&rsquo;s about as good as Wi-Fi gets — a very strong signal, connecting at full speed.</p>
       <p>So the trouble is <b>not</b> my gadgets, <b>not</b> the distance to the router, and <b>not</b> old equipment. Something further along the line is the issue.</p>
     </div>
     <div class="col tech">
@@ -210,7 +210,7 @@
       <h3>Wi-Fi air link is not the bottleneck</h3>
       <div class="tbl-wrap">
         <table>
-          <caption>Wi-Fi link quality (my laptop &rarr; local gateway)</caption>
+          <caption>Wi-Fi link quality (my Mac &rarr; local gateway)</caption>
           <thead><tr><th>Metric</th><th>Reading</th><th>Verdict</th></tr></thead>
           <tbody>
             <tr><td>Standard</td><td>Wi-Fi 6 (802.11ax)</td><td class="good">Modern</td></tr>
@@ -295,12 +295,28 @@
       <span class="chip simple">Plain English</span>
       <h3>It is new, and it comes and goes</h3>
       <p>This week is the first time I <i>noticed</i> a slowdown — but to be fair, there may well have been earlier slow patches that neither I nor my computer flagged, simply because I didn&rsquo;t happen to need much speed at those moments.</p>
-      <p>What I can say for certain: the same laptop tested perfectly clean on May 30, there&rsquo;s no obvious time-of-day pattern, and it affects <b>all three of my devices</b>, which all connect wirelessly through that same building box.</p>
+      <p>What I can say for certain: the same Mac tested perfectly clean on May 30, there&rsquo;s no obvious time-of-day pattern, and it affects <b>all three of my devices</b>, which all connect wirelessly through that same building box.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
       <h3>Regression vs. a known-clean baseline</h3>
       <p>Baseline on the <i>same</i> client, <b>May 30, 2026</b>: ~280 Mbps download, <b>0% loss</b>, low latency, no bufferbloat under load. The degradation was <b>first noticed this week</b>, but onset is <b>observational</b>: intermittent loss during low-demand periods can pass unnoticed, so the true start may predate detection — the May 30 clean run bounds it loosely, not precisely. Loss is non-stationary (23%&rarr;56% within ~20 min), and all my devices share the same managed AP — consistent with a shared upstream impairment.</p>
+    </div>
+  </div>
+
+  <!-- Row 7b: Reboot clue -->
+  <div class="row">
+    <div class="col simple">
+      <span class="chip simple">Plain English</span>
+      <h3>A reboot helps — but only briefly, and only that one machine</h3>
+      <p>When I restart my Mac mini, the speed jumps up for a little while, then slowly fades back down. Restarting one device doesn&rsquo;t help any of the others in the home.</p>
+      <p>To me that hints the slowdown isn&rsquo;t my computer itself — it&rsquo;s something about how the shared building connection hands out speed to each device.</p>
+    </div>
+    <div class="col tech">
+      <span class="chip tech">Technical</span>
+      <h3>Reboot-correlated transient recovery, per-client</h3>
+      <p>Power-cycling the Mac mini yields a brief throughput recovery that decays over minutes; other clients see no benefit from one device&rsquo;s reboot. <b>Per-device + transient</b> is a fingerprint of <b>per-client scheduling / shaping on a contended shared feed</b> — e.g. a fresh Wi-Fi re-association resetting the AP&rsquo;s airtime/rate state, or a per-session burst allowance that refills on a new DHCP lease/session and then throttles to the shaped rate.</p>
+      <p><b>Caveat:</b> line variance is high, so this is suggestive, not conclusive (a Wi-Fi off/on toggle should reproduce it without a full reboot if it&rsquo;s the network layer). Either way it points to the <b>managed-MDU / shared-feed</b> layer, not a device fault.</p>
     </div>
   </div>
 
@@ -422,7 +438,7 @@ Server: lighttpd   <span class="c"># login-gated managed device</span></pre>
   </div>
 
   <footer>
-    <p>Prepared by Ted Pearlman on June 3, 2026, with diagnostic assistance from <b>Claude AI</b> (Anthropic) — Taxi II, 3457 Ringsby Ct, Denver, Colorado 80216 — from direct measurements on a representative device in my home. Figures are presented as measured; intermediate-hop ICMP loss is noted as indicative, while end-to-end loss to public anchors is treated as authoritative. I&rsquo;m grateful for your time and assistance, and I&rsquo;m glad to run any additional diagnostics that would help. &mdash; Thank you.</p>
+    <p>Prepared by Ted Pearlman on June 3, 2026, with diagnostic assistance from <b>Claude AI</b> (Anthropic) — Taxi II, 3457 Ringsby Ct, Denver, Colorado 80216 — from direct measurements on my always-on Mac mini at home. Figures are presented as measured; intermediate-hop ICMP loss is noted as indicative, while end-to-end loss to public anchors is treated as authoritative. I&rsquo;m grateful for your time and assistance, and I&rsquo;m glad to run any additional diagnostics that would help. &mdash; Thank you.</p>
   </footer>
 
 </div>

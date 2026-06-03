@@ -118,6 +118,15 @@
       border-bottom:1px dashed var(--border); padding-bottom:10px}
     .col h3{font-size:16px}
   }
+  .logsec{background:var(--card);border:1px solid var(--border);border-top:5px solid var(--amber);border-radius:var(--radius);padding:20px 22px;margin:26px 0 0}
+  .logsec h2{font-size:20px;margin:0 0 4px}
+  .logsec p.note{font-size:13px;color:var(--muted);margin:0 0 14px}
+  .logsec table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+  .logsec th,.logsec td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+  .logsec thead th{background:var(--soft);font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .logsec tbody tr:last-child td{border-bottom:none}
+  .logsec .num{font-weight:700;white-space:nowrap}
+  .toplink{display:inline-block;margin-top:12px;color:#d7f0e2;font-size:14px;text-decoration:underline;text-underline-offset:2px}
   @media print{
     body{background:#fff}
     .colheads{position:static}
@@ -149,6 +158,7 @@
     </div>
 
     <a href="https://ifnotfor.com/TaxiII-Fiber-Troubleshooting/live" style="display:inline-block;margin-top:20px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.34);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:11px 18px;border-radius:10px">📊&nbsp; View the live connection monitor (updates every 5 min) →</a>
+    <br><a href="#speed-log" class="toplink">↓ Jump to the speed-test log</a>
   </div>
 </header>
 
@@ -438,6 +448,26 @@ Server: lighttpd   <span class="c"># login-gated managed device</span></pre>
       </details>
     </div>
   </div>
+
+  <section class="logsec" id="speed-log">
+    <h2>Speed-test log</h2>
+    <p class="note">A running log of throughput tests (newest first) with notes — these complement the packet-loss case above with real download/upload figures. Continuous packet-loss &amp; latency are on the <a href="https://ifnotfor.com/TaxiII-Fiber-Troubleshooting/live">live monitor page</a>.</p>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>When</th><th>Down</th><th>Up</th><th>Ping idle&rarr;loaded</th><th>Source</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">Jun 3, 2026<br>4:46 PM</td>
+            <td class="num">294 Mbps</td>
+            <td class="num">129 Mbps</td>
+            <td class="num">5 &rarr; 181 / 80 ms</td>
+            <td>Ookla<br>CenturyLink, Denver</td>
+            <td>~30% of the gigabit plan (~13% on upload). Idle ping is fine but spikes to <b>181 ms under load</b> — the latency fingerprint of the loss/queueing. Coincided with <b>33% packet loss</b> in the live monitor the same minute, so the two independent measurements corroborate each other.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
   <footer>
     <p>Prepared by Ted Pearlman on June 3, 2026, with diagnostic assistance from <b>Claude AI</b> (Anthropic) — Taxi II, 3457 Ringsby Ct, Denver, Colorado 80216 — from direct measurements on my always-on Mac mini at home. Figures are presented as measured; intermediate-hop ICMP loss is noted as indicative, while end-to-end loss to public anchors is treated as authoritative. I&rsquo;m grateful for your time and assistance, and I&rsquo;m glad to run any additional diagnostics that would help. &mdash; Thank you.</p>

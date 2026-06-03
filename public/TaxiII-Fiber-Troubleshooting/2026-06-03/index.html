@@ -347,7 +347,23 @@
     </div>
   </div>
 
-  <!-- Row 10: Raw evidence -->
+  <!-- Row 10: Watching for a pattern -->
+  <div class="row">
+    <div class="col simple">
+      <span class="chip simple">Plain English</span>
+      <h3>Meanwhile, I&rsquo;m watching for a pattern</h3>
+      <p>To work out <i>when</i> these slowdowns happen, I&rsquo;ve set up a small automatic monitor on my computer. Every few minutes it quietly measures the connection and saves the result with a timestamp.</p>
+      <p>Over the coming days that builds a picture of whether the drops cluster around certain <b>hours</b> or <b>days</b> — say, busy evenings versus a problem that&rsquo;s there around the clock. That should help point to the cause, and I&rsquo;m glad to share whatever it finds.</p>
+    </div>
+    <div class="col tech">
+      <span class="chip tech">Technical</span>
+      <h3>Continuous sampling for diurnal / weekly structure</h3>
+      <p>A <code>launchd</code> agent samples every <b>5 minutes</b>: ICMP loss + RTT to the gateway, the first WAN hop, and a public anchor (1.1.1.1), plus Wi-Fi RSSI / PHY rate — appended to a timestamped CSV.</p>
+      <p>Aggregating by <b>hour-of-day</b> and <b>day-of-week</b> separates <b>peak-hour congestion / over-subscription</b> (clustered in the evenings) from a <b>constant physical impairment</b> (flat across time), and shows whether loss tracks RF. I can share the raw CSV or a summary on request.</p>
+    </div>
+  </div>
+
+  <!-- Row 11: Raw evidence -->
   <div class="row">
     <div class="col simple">
       <span class="chip simple">Plain English</span>

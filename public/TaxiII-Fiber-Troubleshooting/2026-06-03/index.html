@@ -19,112 +19,91 @@
   body{
     margin:0; background:var(--bg); color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.62; font-size:16px;
+    line-height:1.6; font-size:16px;
   }
-  .wrap{max-width:1120px; margin:0 auto; padding:0 18px 64px}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 18px 64px}
 
   /* ---- Header ---- */
   header.masthead{
     background:linear-gradient(135deg,#16202e 0%,#1f3b4d 55%,#176b5f 100%);
-    color:#fff; padding:40px 0 34px; margin-bottom:26px;
+    color:#fff; padding:40px 0 34px; margin-bottom:22px;
   }
   header.masthead .wrap{padding-bottom:0}
   .eyebrow{font-size:13px; letter-spacing:.1em; text-transform:uppercase; opacity:.82; margin:0 0 10px}
   header.masthead h1{font-size:30px; line-height:1.2; margin:0 0 12px; font-weight:700}
-  header.masthead p.lede{font-size:17px; opacity:.94; margin:0; max-width:760px}
+  header.masthead p.lede{font-size:17px; opacity:.94; margin:0; max-width:780px}
   .addr{margin-top:20px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:10px; padding:12px 16px; display:inline-block}
   .addr-k{margin:0 0 2px; font-size:11px; text-transform:uppercase; letter-spacing:.1em; opacity:.8}
   .addr-v{margin:0; font-size:18px; font-weight:700; line-height:1.35}
-  .audience{margin:18px 0 0; font-size:14.5px; opacity:.95; max-width:800px}
-  .meta-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:22px;
-  }
+  .audience{margin:18px 0 0; font-size:14.5px; opacity:.95; max-width:820px}
+  .meta-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:22px}
   .meta-grid div{background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.16); border-radius:10px; padding:11px 13px}
   .meta-grid .k{font-size:11px; text-transform:uppercase; letter-spacing:.08em; opacity:.78; margin:0 0 3px}
   .meta-grid .v{font-size:15px; font-weight:600; margin:0}
 
-  /* ---- Generic blocks ---- */
-  .note{
-    background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
-    padding:20px 22px; margin:0 0 26px;
-  }
-  .note.greeting{border-left:5px solid var(--green)}
-  h2.section{font-size:21px; margin:34px 0 14px; padding-bottom:8px; border-bottom:2px solid var(--border)}
-  p{margin:0 0 12px}
-  .small{font-size:13px; color:var(--muted)}
-
-  /* ---- TL;DR ---- */
-  .tldr{
-    background:var(--card); border:1px solid var(--border); border-top:5px solid var(--blue);
-    border-radius:var(--radius); padding:22px 24px; margin-bottom:8px;
-  }
-  .tldr h2{margin:0 0 12px; font-size:20px}
-  .tldr ul{margin:0; padding-left:20px}
-  .tldr li{margin:0 0 8px}
-  .pill{display:inline-block; font-size:12.5px; font-weight:700; padding:2px 9px; border-radius:999px; vertical-align:middle}
-  .pill.red{background:var(--red-bg); color:var(--red)}
-  .pill.green{background:var(--green-bg); color:var(--green-ink)}
-  .pill.amber{background:var(--amber-bg); color:var(--amber)}
-
-  /* ---- Column heads (desktop) ---- */
+  /* ---- Sticky column heads ---- */
   .colheads{
     position:sticky; top:0; z-index:5;
-    display:grid; grid-template-columns:1fr 1fr; gap:16px;
-    margin:6px 0 14px; padding:6px 0;
-    background:linear-gradient(var(--bg),var(--bg) 70%,rgba(244,246,249,0));
+    display:grid; grid-template-columns:1fr 1fr; gap:18px;
+    margin:0 0 14px; padding:8px 0;
+    background:linear-gradient(var(--bg),var(--bg) 72%,rgba(244,246,249,0));
   }
-  .colhead{padding:12px 16px; border-radius:10px; font-weight:700}
+  .colhead{padding:13px 17px; border-radius:11px; font-weight:700; font-size:17px}
   .colhead small{display:block; font-weight:500; font-size:12.5px; opacity:.9; margin-top:2px}
   .colhead.simple{background:var(--green-bg); color:var(--green-ink); border:1px solid #bfe6cf}
   .colhead.tech{background:var(--blue-bg); color:var(--blue-ink); border:1px solid #c7dbff}
 
-  /* ---- Findings (two columns per topic) ---- */
-  .finding{
-    display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;
-  }
+  /* ---- Paired rows ---- */
+  .row{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px}
   .col{
     background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
-    padding:18px 19px;
+    padding:19px 20px;
   }
   .col.simple{border-left:4px solid var(--green)}
   .col.tech{border-left:4px solid var(--blue)}
-  .chip{display:none; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
-    padding:3px 9px; border-radius:999px; margin-bottom:10px}
+  .row.lead .col{background:#fbfdff}
+  .chip{display:inline-block; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    padding:3px 9px; border-radius:999px; margin-bottom:11px}
   .chip.simple{background:var(--green-bg); color:var(--green-ink)}
   .chip.tech{background:var(--blue-bg); color:var(--blue-ink)}
-  .col h3{margin:0 0 9px; font-size:16.5px}
+  .col h3{margin:0 0 9px; font-size:17px}
+  .col p{margin:0 0 11px}
   .col p:last-child{margin-bottom:0}
-  .col code{background:var(--soft); border:1px solid var(--border); border-radius:5px; padding:1px 5px; font-size:13px}
-  .col ul{margin:4px 0 0; padding-left:18px}
-  .col li{margin-bottom:6px}
+  .col code{background:var(--soft); border:1px solid var(--border); border-radius:5px; padding:1px 5px; font-size:12.5px}
+  .col ul.points{margin:0; padding:0; list-style:none}
+  .col ul.points li{margin:0 0 9px; padding-left:0}
+  .col ul.points li:last-child{margin-bottom:0}
+  .col ul.bul{margin:6px 0 0; padding-left:18px}
+  .col ul.bul li{margin-bottom:7px}
+  .pill{display:inline-block; font-size:11.5px; font-weight:700; padding:1px 8px; border-radius:999px; margin-right:4px}
+  .pill.red{background:var(--red-bg); color:var(--red)}
+  .pill.green{background:var(--green-bg); color:var(--green-ink)}
+  .pill.amber{background:var(--amber-bg); color:var(--amber)}
+  .pill.blue{background:var(--blue-bg); color:var(--blue-ink)}
 
-  /* ---- Tables ---- */
-  .tablecard{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:6px; overflow-x:auto; margin-bottom:10px}
-  table{border-collapse:collapse; width:100%; min-width:520px; font-size:14.5px}
-  caption{caption-side:top; text-align:left; font-weight:700; padding:12px 12px 8px; font-size:15px}
-  th,td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--border)}
-  thead th{background:var(--soft); font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted)}
-  tbody tr:last-child td{border-bottom:none}
+  /* ---- Tables inside a column ---- */
+  .tbl-wrap{overflow-x:auto; margin-top:2px}
+  .col table{border-collapse:collapse; width:100%; font-size:13px}
+  .col caption{caption-side:top; text-align:left; font-weight:700; padding:0 0 9px; font-size:14px}
+  .col th,.col td{padding:7px 9px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top}
+  .col thead th{background:var(--soft); font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--muted)}
+  .col tbody tr:last-child td{border-bottom:none}
   td.good{color:var(--green-ink); font-weight:600}
   td.bad{color:var(--red); font-weight:700}
   td.mid{color:var(--amber); font-weight:600}
+  .takeaway{font-size:12.5px; color:var(--muted); margin-top:9px}
 
-  /* ---- Ask list ---- */
-  ol.ask{margin:0; padding-left:22px}
-  ol.ask li{margin-bottom:11px}
-  ol.ask b{color:var(--ink)}
-
-  /* ---- Appendix ---- */
+  /* ---- Raw output ---- */
   pre{
-    background:#0f1722; color:#d7e2ee; border-radius:12px; padding:16px 18px;
-    overflow-x:auto; font-size:12.8px; line-height:1.5; margin:0 0 16px;
+    background:#0f1722; color:#d7e2ee; border-radius:10px; padding:14px 15px;
+    overflow-x:auto; font-size:12px; line-height:1.5; margin:0 0 12px;
     font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   }
   pre .c{color:#8aa0b6}
-  details{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:6px 18px; margin-bottom:14px}
-  summary{cursor:pointer; font-weight:600; padding:10px 0}
+  details{border:1px solid var(--border); border-radius:10px; padding:4px 14px; margin-bottom:11px; background:var(--soft)}
+  summary{cursor:pointer; font-weight:600; padding:9px 0; font-size:13.5px}
 
-  footer{margin-top:36px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:13px}
+  footer{margin-top:30px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:13px}
 
   /* ---- Responsive: stack to one column on phones ---- */
   @media (max-width:760px){
@@ -135,10 +114,9 @@
     .addr-v{font-size:16px}
     .meta-grid{grid-template-columns:1fr 1fr; gap:10px}
     .colheads{display:none}
-    .finding{grid-template-columns:1fr; gap:10px; margin-bottom:22px;
-      border-bottom:1px dashed var(--border); padding-bottom:8px}
-    .chip{display:inline-block}
-    h2.section{font-size:19px}
+    .row{grid-template-columns:1fr; gap:10px; margin-bottom:24px;
+      border-bottom:1px dashed var(--border); padding-bottom:10px}
+    .col h3{font-size:16px}
   }
   @media print{
     body{background:#fff}
@@ -161,7 +139,7 @@
       <p class="addr-v">Taxi II &middot; 3457 Ringsby Ct &middot; Denver, Colorado 80216</p>
     </div>
 
-    <p class="audience">I wrote this so it&rsquo;s useful to <b>anyone on the building&rsquo;s board, the team at Axon Networks, and Quantum Fiber</b> — whatever your technical background. Every finding is shown in <b>two versions, side by side: an easy-to-grasp plain-English version and a highly technical version.</b></p>
+    <p class="audience">I wrote this so it&rsquo;s useful to <b>anyone on the building&rsquo;s board, the team at Axon Networks, and Quantum Fiber</b> — whatever your technical background. <b>The entire report runs in two columns:</b> the left side explains each point in plain English, and the right side gives the same point in full technical detail. Read whichever side suits you.</p>
 
     <div class="meta-grid">
       <div><p class="k">Date of tests</p><p class="v">June 3, 2026</p></div>
@@ -174,95 +152,109 @@
 
 <div class="wrap">
 
-  <div class="note greeting">
-    <p style="margin:0"><b>Hello, and thank you for reading.</b> I genuinely appreciate your help. I&rsquo;ve done a fair amount of testing on my end first, so that I could hand you something concrete rather than just &ldquo;the internet feels slow.&rdquo; Everything below is what I actually measured today. I&rsquo;ve tried to be precise and fair — including noting the limits of what I can see from inside my apartment. I&rsquo;d be grateful for your guidance on next steps.</p>
-  </div>
-
-  <div class="tldr">
-    <h2>The short version</h2>
-    <ul>
-      <li><span class="pill green">Good</span> &nbsp;My Wi-Fi signal and my own devices are <b>not</b> the problem — the wireless link is excellent (strong signal, full-speed connection).</li>
-      <li><span class="pill red">Problem</span> &nbsp;The connection is <b>losing a large share of its data packets — roughly 20% to 56%</b> in repeated tests. That alone is enough to drag a 1 Gbps line down to 50–100 Mbps, because the loss forces the connection to keep slowing itself down.</li>
-      <li><span class="pill amber">Context</span> &nbsp;The loss <b>begins at the very first device</b> my traffic reaches and <b>grows as it travels upstream</b>. This device is <b>building-managed equipment</b>, and my unit was reportedly connected by &ldquo;splitting an existing pipe&rdquo; — a detail worth investigating.</li>
-      <li><span class="pill green">New</span> &nbsp;This is <b>recent</b>. The same laptop tested clean (0% loss) just a few days ago, on May 30, 2026.</li>
-    </ul>
-  </div>
-  <p class="small">Below, the left column explains each finding in plain language; the right column gives the full technical detail. On a phone, the plain-language version of each point appears first, followed by the technical version.</p>
-
-  <!-- ===== Measurements up front ===== -->
-  <h2 class="section">The measurements at a glance</h2>
-
-  <div class="tablecard">
-    <table>
-      <caption>1 &middot; Wi-Fi link quality (my laptop &rarr; the local gateway)</caption>
-      <thead><tr><th>What</th><th>Reading</th><th>Verdict</th></tr></thead>
-      <tbody>
-        <tr><td>Wi-Fi standard</td><td>Wi-Fi 6 (802.11ax)</td><td class="good">Modern</td></tr>
-        <tr><td>Band / channel</td><td>5 GHz, channel 149, 80 MHz wide</td><td class="good">Good</td></tr>
-        <tr><td>Signal strength (RSSI)</td><td>&minus;41 dBm</td><td class="good">Excellent</td></tr>
-        <tr><td>Noise / signal-to-noise</td><td>&minus;94 dBm noise (~53 dB SNR)</td><td class="good">Excellent</td></tr>
-        <tr><td>Negotiated link rate</td><td>1200 Mbps (MCS 11, security WPA3)</td><td class="good">Full speed</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="small">Takeaway: the air link between my device and the gateway is essentially perfect. This rules out distance, interference at the device, weak signal, or old hardware as the cause.</p>
-
-  <div class="tablecard">
-    <table>
-      <caption>2 &middot; Packet loss along the path — two samples about 20 minutes apart</caption>
-      <thead><tr><th>Point on the path</th><th>What it is</th><th>Sample A</th><th>Sample B</th></tr></thead>
-      <tbody>
-        <tr><td>192.168.0.1</td><td>My gateway (building-managed)</td><td class="mid">23%</td><td class="bad">32–42%</td></tr>
-        <tr><td>207.225.112.17</td><td>Quantum / Lumen — 1st hop</td><td class="mid">23%</td><td class="bad">40%</td></tr>
-        <tr><td>63.225.124.129</td><td>Quantum / Lumen — 2nd hop</td><td class="bad">33%</td><td>—</td></tr>
-        <tr><td>1.1.1.1</td><td>Internet (Cloudflare)</td><td class="bad">20–45%</td><td class="bad">56%</td></tr>
-        <tr><td>8.8.8.8</td><td>Internet (Google)</td><td>—</td><td class="bad">52%</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="small">Takeaway: loss is present from the very first hop and accumulates downstream. Latency, by contrast, was usually low (3–13 ms) — so this is a <i>loss</i> problem, not a congestion/latency problem.</p>
-
-  <!-- ===== Column headers for the side-by-side findings ===== -->
-  <h2 class="section">What I found — in two levels of detail</h2>
   <div class="colheads">
     <div class="colhead simple">For a Non-Technical Reader<small>e.g. a building board member or a front-line support agent</small></div>
     <div class="colhead tech">For a Network Engineer<small>full technical detail &amp; raw evidence</small></div>
   </div>
 
-  <!-- Finding 1 -->
-  <div class="finding">
+  <!-- Row 1: Start here -->
+  <div class="row lead">
+    <div class="col simple">
+      <span class="chip simple">Plain English</span>
+      <h3>Start here — and thank you</h3>
+      <p>Thank you for taking the time. My home internet is supposed to be 1 gigabit, but lately it keeps dropping to <b>50–100 Mbps</b> — slow enough to be a real problem, and it&rsquo;s happening on all three of my devices.</p>
+      <p>Before reaching out, I ran my own tests so I could hand you something concrete instead of just &ldquo;it feels slow.&rdquo; Everything on this left side is in plain English; the same point appears in full technical detail on the right. Both say the same thing.</p>
+    </div>
+    <div class="col tech">
+      <span class="chip tech">Technical</span>
+      <h3>Scope &amp; method</h3>
+      <p>A 1 Gbps fiber plan is intermittently delivering <b>50–100 Mbps</b> (recovering to 500–600 Mbps) across three Wi-Fi clients since on/about June 1, 2026, with no clear diurnal pattern.</p>
+      <p>All diagnostics were run <b>June 3, 2026</b> from a single macOS client associated to the building Wi-Fi (no wired drop exists in the unit), using <code>ping</code>, <code>traceroute</code>, <code>system_profiler</code>, <code>netstat</code>, and <code>openssl</code>. Exact figures and reasoning are on this side; raw output is in the final row.</p>
+    </div>
+  </div>
+
+  <!-- Row 2: Bottom line -->
+  <div class="row">
+    <div class="col simple">
+      <span class="chip simple">Plain English</span>
+      <h3>The bottom line</h3>
+      <ul class="points">
+        <li><span class="pill green">Good</span> My Wi-Fi and my devices are fine — strong signal, full-speed wireless.</li>
+        <li><span class="pill red">Problem</span> A large share of my data — roughly <b>20% to 56%</b> in repeated tests — is getting lost in transit. That alone drags gigabit down to 50–100 Mbps.</li>
+        <li><span class="pill amber">Context</span> The loss begins at the <b>very first box</b> my connection reaches. That box is building-managed, and my unit was connected by &ldquo;splitting an existing pipe.&rdquo;</li>
+        <li><span class="pill green">New</span> It started this week. The same laptop tested perfectly clean on May 30.</li>
+      </ul>
+    </div>
+    <div class="col tech">
+      <span class="chip tech">Technical</span>
+      <h3>Executive summary</h3>
+      <ul class="points">
+        <li><span class="pill blue">RF</span> Air link near-ideal: &minus;41 dBm, SNR ≈ 53 dB, 1200 Mbps PHY, <b>0 interface errors</b> — client/Wi-Fi excluded.</li>
+        <li><span class="pill red">Loss</span> <b>20–56%</b> end-to-end packet loss to public anchors; loss-dominated (RTT stable 3–13 ms). TCP goodput collapses under AIMD &rarr; the observed 50–100 Mbps floors.</li>
+        <li><span class="pill amber">Topology</span> Loss originates at <b>hop 1</b> and compounds upstream. Gateway = <b>Axon Networks MDU CPE</b>; service delivered over a recently &ldquo;split&rdquo; feed.</li>
+        <li><span class="pill blue">Trend</span> Clean baseline May 30 (0% loss, ~280 Mbps) &rarr; recent regression; non-stationary (23%&rarr;56% in ~20 min); fleet-wide via shared AP.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Row 3: Wi-Fi -->
+  <div class="row">
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>My Wi-Fi and devices are healthy</h3>
-      <p>I checked the wireless connection between my laptop and the box that provides my internet. The signal is very strong — about as good as it gets — and the laptop is connecting at full speed.</p>
-      <p>So the trouble is <b>not</b> my gadgets, not the distance to the router, and not old equipment. Something further along the line is the issue.</p>
+      <p>The first thing I checked was the wireless link between my laptop and the box that gives me internet. It&rsquo;s about as good as Wi-Fi gets — a very strong signal, connecting at full speed.</p>
+      <p>So the trouble is <b>not</b> my gadgets, <b>not</b> the distance to the router, and <b>not</b> old equipment. Something further along the line is the issue.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
       <h3>Wi-Fi air link is not the bottleneck</h3>
-      <p>Client associated at <b>802.11ax, 5 GHz ch 149 (80 MHz), RSSI &minus;41 dBm, noise &minus;94 dBm (SNR ≈ 53 dB), PHY rate 1200 Mbps, MCS 11, WPA3.</b> These are near-ideal RF conditions.</p>
-      <p>Crucially, <code>netstat -I</code> on the Wi-Fi interface showed <b>zero input/output errors</b> despite heavy loss — ruling out a driver/NIC/airtime hardware fault on the client side. Strong signal + high loss points upstream, not at the radio.</p>
+      <div class="tbl-wrap">
+        <table>
+          <caption>Wi-Fi link quality (my laptop &rarr; local gateway)</caption>
+          <thead><tr><th>Metric</th><th>Reading</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td>Standard</td><td>Wi-Fi 6 (802.11ax)</td><td class="good">Modern</td></tr>
+            <tr><td>Band / channel</td><td>5 GHz, ch 149, 80 MHz</td><td class="good">Good</td></tr>
+            <tr><td>Signal (RSSI)</td><td>&minus;41 dBm</td><td class="good">Excellent</td></tr>
+            <tr><td>Noise / SNR</td><td>&minus;94 dBm (~53 dB)</td><td class="good">Excellent</td></tr>
+            <tr><td>PHY rate</td><td>1200 Mbps (MCS 11, WPA3)</td><td class="good">Full speed</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="takeaway"><code>netstat -I en1</code> showed <b>0 input/output errors</b> despite heavy loss — ruling out a client NIC/driver/airtime fault. Strong signal + high loss &rArr; the problem is upstream of the radio.</p>
     </div>
   </div>
 
-  <!-- Finding 2 -->
-  <div class="finding">
+  <!-- Row 4: Packet loss -->
+  <div class="row">
     <div class="col simple">
       <span class="chip simple">Plain English</span>
-      <h3>A lot of data is getting lost</h3>
-      <p>Think of the connection as a delivery route. When I sent test packages along it, <b>somewhere between 1-in-5 and more than half never arrived.</b></p>
-      <p>When that happens, the internet automatically slows everything down to cope. That is exactly why a 1-gigabit line ends up feeling like 50–100 Mbps: the speed is fine, but the losses keep forcing it to throttle back.</p>
+      <h3>A lot of my data is getting lost</h3>
+      <p>Next I measured how much data actually makes it through. Think of the connection as a delivery route — when I sent test packages along it, <b>somewhere between one-in-five and more than half never arrived.</b></p>
+      <p>That&rsquo;s the heart of the problem. When data is lost, the connection automatically slows itself down to recover — which is exactly why a gigabit line ends up feeling like 50–100 Mbps.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
       <h3>20–56% packet loss is collapsing TCP throughput</h3>
-      <p>Repeated ICMP tests showed loss ranging <b>20% to 56%</b> to public anchors (1.1.1.1 and 8.8.8.8), with low, stable RTT (3–13 ms) on surviving packets — i.e. loss-dominated, not buffer/latency-dominated. A brief 1003 ms spike appeared early, then disappeared, consistent with intermittent events.</p>
-      <p>At these loss rates, TCP congestion control (and loss-based AIMD in particular) cannot sustain a large congestion window, so goodput collapses far below line rate regardless of provisioned speed. This fully accounts for the observed 50–100 Mbps floors and 500–600 Mbps recoveries.</p>
+      <div class="tbl-wrap">
+        <table>
+          <caption>Packet loss along the path — two samples ~20 min apart</caption>
+          <thead><tr><th>Point</th><th>What</th><th>A</th><th>B</th></tr></thead>
+          <tbody>
+            <tr><td>192.168.0.1</td><td>My gateway (managed)</td><td class="mid">23%</td><td class="bad">32–42%</td></tr>
+            <tr><td>207.225.112.17</td><td>Quantum/Lumen hop 1</td><td class="mid">23%</td><td class="bad">40%</td></tr>
+            <tr><td>63.225.124.129</td><td>Quantum/Lumen hop 2</td><td class="bad">33%</td><td>—</td></tr>
+            <tr><td>1.1.1.1</td><td>Cloudflare</td><td class="bad">20–45%</td><td class="bad">56%</td></tr>
+            <tr><td>8.8.8.8</td><td>Google</td><td>—</td><td class="bad">52%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="takeaway">Loss-dominated, not latency-dominated (surviving-packet RTT 3–13 ms). At these rates, loss-based congestion control (AIMD) cannot hold a large window, so goodput falls far below line rate regardless of provisioning.</p>
     </div>
   </div>
 
-  <!-- Finding 3 -->
-  <div class="finding">
+  <!-- Row 5: Where it starts -->
+  <div class="row">
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>The losses start right at the first box</h3>
@@ -272,33 +264,33 @@
     <div class="col tech">
       <span class="chip tech">Technical</span>
       <h3>Loss originates at hop 1 and compounds upstream</h3>
-      <p>Per-hop loss in Sample B: gateway 32% &rarr; first WAN hop 40% &rarr; destination 56%. This monotonic increase indicates <b>multiple loss contributors</b>: the first local segment plus additional upstream loss across the access/aggregation path.</p>
-      <p><b>Honest caveat:</b> ICMP <i>to</i> an intermediate hop can be inflated by control-plane policing, so per-hop figures are indicative, not definitive. The authoritative signal is the <b>end-to-end loss to the public anchors (20–56%)</b>, which is real on-path loss. The traceroute also shows <b>no second RFC1918 hop</b> — hop 2 is already a public Lumen/CenturyLink address — suggesting no additional NAT layer in the L3 path.</p>
+      <p>Per-hop loss in Sample B: gateway 32% &rarr; first WAN hop 40% &rarr; destination 56%. The monotonic increase indicates <b>multiple contributors</b>: the first local segment plus added upstream loss across the access/aggregation path.</p>
+      <p><b>Honest caveat:</b> ICMP <i>to</i> an intermediate hop can be inflated by control-plane policing, so per-hop figures are indicative. The authoritative signal is the <b>end-to-end loss to public anchors (20–56%)</b>. Traceroute shows <b>no second RFC1918 hop</b> (hop 2 is already public Lumen/CenturyLink), so no extra NAT layer is in the L3 path.</p>
     </div>
   </div>
 
-  <!-- Finding 4 -->
-  <div class="finding">
+  <!-- Row 6: The box -->
+  <div class="row">
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>The first box is building-managed equipment</h3>
-      <p>The box that gives me internet is not a standard home router — it is <b>equipment managed by the building's network provider</b>. I was told my apartment was connected by <b>&ldquo;splitting an existing pipe&rdquo;</b> because they had run out of separate lines.</p>
-      <p>That kind of shared or split connection is worth a close look, because it can introduce exactly the sort of losses I am seeing. I cannot inspect this box myself — it requires a login that the building and provider control.</p>
+      <p>The box that gives me internet is not a standard home router — it is <b>equipment managed by the building&rsquo;s network provider</b>. I was told my apartment was connected by <b>&ldquo;splitting an existing pipe&rdquo;</b> because they had run out of separate lines.</p>
+      <p>That kind of shared or split connection is worth a close look, because it can introduce exactly the sort of losses I&rsquo;m seeing. I can&rsquo;t inspect this box myself — it needs a login that the building and provider control.</p>
     </div>
     <div class="col tech">
       <span class="chip tech">Technical</span>
       <h3>Gateway = managed MDU CPE; shared/split feed suspected</h3>
       <p>Gateway <code>192.168.0.1</code> fingerprint:</p>
-      <ul>
+      <ul class="bul">
         <li>MAC <code>00:58:28:6c:89:83</code> &rarr; OUI <b>Axon Networks Inc.</b> (managed Wi-Fi / MDU vendor).</li>
-        <li>TLS cert <code>O=GWS SW, CN=CPE</code> (Irvine, CA), self-signed, issued <b>2026-04-08</b>; server <code>lighttpd</code>; admin UI is login-gated.</li>
+        <li>TLS cert <code>O=GWS SW, CN=CPE</code> (Irvine, CA), self-signed, issued <b>2026-04-08</b>; <code>lighttpd</code>; admin UI login-gated.</li>
       </ul>
-      <p>Because my unit was wired by &ldquo;splitting an existing pipe,&rdquo; plausible upstream causes include an <b>added optical splitter reducing the ONT optical budget</b> (low Rx power &rarr; FEC/CRC errors) or a <b>shared/over-subscribed physical run</b>. The decisive data — <b>optical Rx/Tx power (dBm), FEC/CRC/uncorrectable counters, and PON utilization</b> — sits behind the managed-CPE login and must be pulled by Quantum and/or the property's managed-network operator (Axon).</p>
+      <p>Because my unit was wired by &ldquo;splitting an existing pipe,&rdquo; plausible upstream causes include an <b>added optical splitter reducing the ONT optical budget</b> (low Rx power &rarr; FEC/CRC errors) or a <b>shared/over-subscribed run</b>. The decisive data — <b>optical Rx/Tx power (dBm), FEC/CRC/uncorrectable counters, PON utilization</b> — sits behind the managed-CPE login and must be pulled by Quantum and/or Axon.</p>
     </div>
   </div>
 
-  <!-- Finding 5 -->
-  <div class="finding">
+  <!-- Row 7: New & intermittent -->
+  <div class="row">
     <div class="col simple">
       <span class="chip simple">Plain English</span>
       <h3>It is new, and it comes and goes</h3>
@@ -307,74 +299,94 @@
     <div class="col tech">
       <span class="chip tech">Technical</span>
       <h3>Regression vs. a known-clean baseline</h3>
-      <p>Baseline on the <i>same</i> client, <b>May 30, 2026</b>: ~280 Mbps download, <b>0% loss</b>, low latency, no bufferbloat under load. Today's heavy loss is therefore a <b>recent regression</b>, not a longstanding condition. Loss rates are non-stationary (23% &rarr; 56% within ~20 min), and all my devices share the same managed AP, so a shared upstream impairment explains the fleet-wide, intermittent symptom.</p>
+      <p>Baseline on the <i>same</i> client, <b>May 30, 2026</b>: ~280 Mbps download, <b>0% loss</b>, low latency, no bufferbloat under load. Today&rsquo;s loss is therefore a <b>recent regression</b>, not a longstanding condition. Loss is non-stationary (23%&rarr;56% within ~20 min), and all my devices share the same managed AP — consistent with a shared upstream impairment.</p>
     </div>
   </div>
 
-  <!-- ===== What I'm asking ===== -->
-  <h2 class="section">What I would respectfully ask you to check</h2>
-  <div class="note">
-    <p>I know the equipment is partly building-managed, so some of this may need coordination between the property/Axon Networks and Quantum Fiber. I&rsquo;m happy to help however I can — including running any further tests you suggest. With thanks:</p>
-    <ol class="ask">
-      <li><b>Confirm my line is provisioned for 1 Gbps</b> and that the account/ONT shows the expected service profile.</li>
-      <li><b>Read the optical and error statistics</b> at the ONT/CPE for my unit — particularly <b>optical receive power (dBm)</b> and <b>FEC/CRC / uncorrectable-error counters</b>. Low optical power or rising error counts would confirm a degraded physical feed.</li>
-      <li><b>Investigate the recently &ldquo;split&rdquo; feed</b> serving my apartment — whether a splitter, shared run, or marginal splice was introduced when my unit was connected, and whether it is within optical-budget spec.</li>
-      <li><b>Check for sharing / over-subscription</b> on that segment that could cause intermittent loss when neighboring usage is high.</li>
-      <li><b>Coordinate between the property&rsquo;s managed-network provider (Axon Networks) and Quantum Fiber</b> so the gateway/AP, its backhaul, and the fiber feed can all be examined together.</li>
-    </ol>
+  <!-- Row 8: The ask -->
+  <div class="row">
+    <div class="col simple">
+      <span class="chip simple">Plain English</span>
+      <h3>What I&rsquo;m hoping you can check</h3>
+      <p>Since the equipment is partly building-managed, some of this may need the property/Axon and Quantum to talk to each other. I&rsquo;m glad to help and to run any further tests you suggest. With thanks:</p>
+      <ul class="bul">
+        <li>Confirm my plan really is set up for <b>1 gigabit</b>.</li>
+        <li>Check the <b>health and signal of the fiber line</b> coming into my unit.</li>
+        <li>Take a close look at the <b>recently &ldquo;split&rdquo; connection</b> that was used to hook me up.</li>
+        <li>Check whether I&rsquo;m <b>sharing the line</b> with others in a way that slows it down.</li>
+        <li>Get the <b>building&rsquo;s provider (Axon) and Quantum talking</b> so nothing falls between the cracks.</li>
+      </ul>
+    </div>
+    <div class="col tech">
+      <span class="chip tech">Technical</span>
+      <h3>Specific items to verify</h3>
+      <ul class="bul">
+        <li><b>Provisioning:</b> confirm the ONT/account shows the expected 1 Gbps service profile.</li>
+        <li><b>Optical &amp; errors:</b> read <b>optical Rx power (dBm)</b> and <b>FEC/CRC/uncorrectable counters</b> at the ONT/CPE for my unit. Low Rx power or rising errors confirm a degraded physical feed.</li>
+        <li><b>The split feed:</b> verify whether a splitter, shared run, or marginal splice was introduced at connect time, and whether it&rsquo;s within optical-budget spec.</li>
+        <li><b>Sharing:</b> check for over-subscription on that PON segment that could cause intermittent loss under neighbor load.</li>
+        <li><b>Ownership:</b> coordinate Axon (gateway/AP + backhaul) with Quantum (fiber feed) so all layers are examined together.</li>
+      </ul>
+    </div>
   </div>
 
-  <!-- ===== Appendix ===== -->
-  <h2 class="section">Appendix — raw test output</h2>
-  <p class="small">For the technically inclined. All tests were run on June 3, 2026 from a macOS laptop connected by Wi-Fi to the gateway (no wired option is available in my unit). Tools: <code>ping</code>, <code>traceroute</code>, <code>system_profiler</code>, <code>netstat</code>, <code>openssl</code>.</p>
-
-  <details open>
-    <summary>Path trace &amp; packet loss</summary>
+  <!-- Row 9: Raw evidence -->
+  <div class="row">
+    <div class="col simple">
+      <span class="chip simple">Plain English</span>
+      <h3>The raw evidence</h3>
+      <p>This last part is the raw output from my tests — the actual numbers behind everything above. I&rsquo;ve included it so any engineer can check my work.</p>
+      <p>If you&rsquo;re not technical, there&rsquo;s nothing here you need to read or act on. The plain-English summary above already covers it.</p>
+    </div>
+    <div class="col tech">
+      <span class="chip tech">Technical</span>
+      <h3>Raw test output</h3>
+      <details open>
+        <summary>Path trace &amp; packet loss</summary>
 <pre><span class="c"># traceroute to 1.1.1.1 (no second private hop after the gateway)</span>
  1  192.168.0.1        3.180 ms
- 2  207.225.112.17    11.985 ms      <span class="c"># Lumen/CenturyLink (Quantum) — already public</span>
+ 2  207.225.112.17    11.985 ms   <span class="c"># Lumen/CenturyLink (Quantum)</span>
  3  63.225.124.129     5.769 ms
- 4  *                                 <span class="c"># hops 4–6 did not answer ICMP</span>
+ 4  *                              <span class="c"># hops 4–6 silent</span>
  7  172.68.32.12       8.717 ms
  8  1.1.1.1            7.121 ms
 
-<span class="c"># packet loss — Sample A</span>
-192.168.0.1   : 23.3% loss   (rtt 2.5 / 92.6 / 1003.4 ms)
-207.225.112.17: 23.3% loss   (rtt 6.0 / 11.5 / 44.9 ms)
-63.225.124.129: 33.3% loss   (rtt 5.7 / 8.0 / 18.9 ms)
-1.1.1.1       : 20–45% loss
+<span class="c"># loss — Sample A</span>
+192.168.0.1   : 23.3%   (rtt 2.5/92.6/1003.4 ms)
+207.225.112.17: 23.3%   (rtt 6.0/11.5/44.9 ms)
+63.225.124.129: 33.3%   (rtt 5.7/8.0/18.9 ms)
+1.1.1.1       : 20–45%
 
-<span class="c"># packet loss — Sample B (~20 min later)</span>
-192.168.0.1   : 32.0% loss   (later 40-packet run: 42.5% loss, rtt 2.9 / 3.6 / 4.9 ms)
-207.225.112.17: 40.0% loss
-1.1.1.1       : 56.0% loss
-8.8.8.8       : 52.0% loss</pre>
-  </details>
+<span class="c"># loss — Sample B (~20 min later)</span>
+192.168.0.1   : 32.0%   (40-pkt run: 42.5%, rtt 2.9/3.6/4.9 ms)
+207.225.112.17: 40.0%
+1.1.1.1       : 56.0%
+8.8.8.8       : 52.0%</pre>
+      </details>
+      <details>
+        <summary>Wi-Fi link &amp; interface errors</summary>
+<pre><span class="c"># system_profiler SPAirPortDataType</span>
+PHY Mode:       802.11ax
+Channel:        149 (5 GHz, 80 MHz)
+Signal / Noise: -41 dBm / -94 dBm
+Transmit Rate:  1200      MCS Index: 11
+Security:       WPA3 Personal
 
-  <details>
-    <summary>Wi-Fi link &amp; interface error counters</summary>
-<pre><span class="c"># system_profiler SPAirPortDataType — current association</span>
-PHY Mode:        802.11ax
-Channel:         149 (5 GHz, 80 MHz)
-Signal / Noise:  -41 dBm / -94 dBm
-Transmit Rate:   1200
-MCS Index:       11
-Security:        WPA3 Personal
-
-<span class="c"># netstat -I en1  ->  Ierrs = 0, Oerrs = 0  (no hardware-layer errors)</span></pre>
-  </details>
-
-  <details>
-    <summary>Gateway identity (MAC vendor &amp; TLS certificate)</summary>
+<span class="c"># netstat -I en1  ->  Ierrs = 0, Oerrs = 0</span></pre>
+      </details>
+      <details>
+        <summary>Gateway identity (MAC &amp; TLS cert)</summary>
 <pre><span class="c"># arp -n 192.168.0.1</span>
-192.168.0.1 at 0:58:28:6c:89:83        <span class="c"># OUI 00:58:28 = Axon Networks Inc.</span>
+192.168.0.1 at 0:58:28:6c:89:83   <span class="c"># OUI = Axon Networks Inc.</span>
 
-<span class="c"># openssl x509 on https://192.168.0.1:443</span>
+<span class="c"># openssl x509 (https://192.168.0.1:443)</span>
 subject = C=US, ST=CA, L=Irvine, O=GWS SW, CN=CPE
-issuer  = C=US, ST=CA, L=Irvine, O=GWS SW, CN=CPE   <span class="c"># self-signed</span>
-notBefore = Apr  8 2026     notAfter = Jul 11 2028
-Server: lighttpd            <span class="c"># admin UI is login-gated (managed device)</span></pre>
-  </details>
+issuer  = (same — self-signed)
+notBefore = Apr 8 2026   notAfter = Jul 11 2028
+Server: lighttpd   <span class="c"># login-gated managed device</span></pre>
+      </details>
+    </div>
+  </div>
 
   <footer>
     <p>Prepared by Ted Pearlman on June 3, 2026 — Taxi II, 3457 Ringsby Ct, Denver, Colorado 80216 — from direct measurements on a representative device in my home. Figures are presented as measured; intermediate-hop ICMP loss is noted as indicative, while end-to-end loss to public anchors is treated as authoritative. I&rsquo;m grateful for your time and assistance, and I&rsquo;m glad to run any additional diagnostics that would help. &mdash; Thank you.</p>
